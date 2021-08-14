@@ -7,6 +7,7 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
 
     private String str = "Oasis";
+    String str2 = "Oasis2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
