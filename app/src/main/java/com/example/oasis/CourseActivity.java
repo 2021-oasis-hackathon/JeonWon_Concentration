@@ -1,14 +1,19 @@
 package com.example.oasis;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CourseActivity extends AppCompatActivity {
 
@@ -16,10 +21,11 @@ public class CourseActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CourseActivityAdapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
     List<Course> courseList = CourseListActivity.courseList;
 
     private TextView place;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +33,9 @@ public class CourseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_course);
 
         Intent intent = getIntent();
-        int position = intent.getIntExtra("position",0);
+        int getPosition = intent.getIntExtra("position",0);
         place = (TextView) findViewById(R.id.place);
-        place.setText(courseList.get(position).getPlace());
+        place.setText(courseList.get(getPosition).getPlace());
 
 
         recyclerView = (RecyclerView) findViewById(R.id.courseActivityRecyclerView);
@@ -41,4 +47,5 @@ public class CourseActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
     }
+
 }

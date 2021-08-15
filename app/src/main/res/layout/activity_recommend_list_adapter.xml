@@ -13,6 +13,7 @@
         android:layout_centerVertical="true"/>
 
     <LinearLayout
+        android:id="@+id/center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -39,7 +40,32 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/heart"/>
+
+        <TextView
+            android:id="@+id/likeCount"
+            android:text="15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bmf"
+            android:textSize="15dp"
+            android:layout_marginLeft="2dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"/>
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

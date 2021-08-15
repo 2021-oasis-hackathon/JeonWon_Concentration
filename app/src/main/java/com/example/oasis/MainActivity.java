@@ -11,7 +11,6 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction ft;
 
     private HomeActivity homeActivity;
-    private RecommendActivity recommendActivity;
+    private RecommendListActivity recommendActivity;
     private BlogActivity blogActivity;
     private MyPageActivity myPageActivity;
 
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         homeActivity = new HomeActivity();
-        recommendActivity = new RecommendActivity();
+        recommendActivity = new RecommendListActivity();
         blogActivity = new BlogActivity();
         myPageActivity = new MyPageActivity();
 

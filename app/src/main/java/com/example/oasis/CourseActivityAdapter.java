@@ -46,15 +46,15 @@ public class CourseActivityAdapter extends RecyclerView.Adapter<CourseActivityAd
     @Override
     public void onBindViewHolder(CourseActivityAdapter.MyViewHolder holder, int position) {
 
-
-        holder.place.setText(dataList.get(position).getPlace());
-        holder.image.setImageBitmap(dataList.get(position).getBitmap());
+        holder.place.setText(dataList.get(position % dataList.size()).getPlace());
+        holder.image.setImageBitmap(dataList.get(position % dataList.size()).getBitmap());
 
 
     }
 
     @Override
     public int getItemCount() {
-        return dataList == null ? 0 : dataList.size();
+        return dataList == null ? 0 : Integer.MAX_VALUE;
+        //dataList.size()
     }
 }
