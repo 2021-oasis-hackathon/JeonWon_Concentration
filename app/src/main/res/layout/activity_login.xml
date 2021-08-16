@@ -31,15 +31,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/login_id_edittext_design"
+            android:background="@drawable/edittext_design"
             android:elevation="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="15dp">
 
             <EditText
@@ -56,10 +56,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/login_id_edittext_design"
+            android:background="@drawable/edittext_design"
             android:elevation="10dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="15dp">
 
             <EditText
@@ -86,9 +84,10 @@
             android:textColor="#ffffff"
             android:text="로그인"
             android:textSize="15dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/bmf"/>
 
         <Button
             android:id="@+id/member"
@@ -97,7 +96,8 @@
             android:text="아이디가 없으신가요? 회원가입!"
             android:textColor="#ACAAAA"
             android:background="@null"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/bmf"/>
     </LinearLayout>
 
 </RelativeLayout>
