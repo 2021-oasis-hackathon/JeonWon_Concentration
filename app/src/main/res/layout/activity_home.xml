@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="로고 or 앱 이름"
@@ -21,6 +22,34 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#E1DEDE" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/jMap"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/jmap"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <ImageView
+            android:layout_weight="1"
+            android:id="@+id/jbMap"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/jbmap"/>
+
+    </LinearLayout>
+
+
+
 
     <Button
         android:layout_width="wrap_content"
