@@ -7,24 +7,6 @@
     tools:context=".LoginActivity">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        tools:srcCompat="@drawable/logo" />
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="로고"-->
-<!--        android:textSize="50dp"-->
-<!--        android:textColor="#000000"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:fontFamily="@font/bmf"-->
-<!--        android:layout_above="@+id/center"-->
-<!--        android:layout_marginBottom="20dp"/>-->
-
     <LinearLayout
         android:id="@+id/center"
         android:layout_width="match_parent"
@@ -34,6 +16,21 @@
         android:gravity="center"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            tools:srcCompat="@drawable/logo" />
+
+        <ImageView
+            android:layout_below="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logot"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,11 +80,11 @@
             android:background="@drawable/login_button_design"
             android:textColor="#ffffff"
             android:text="로그인"
-            android:textSize="15dp"
+            android:textSize="18dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="@font/bmf"/>
+            android:fontFamily="@font/gmb"/>
 
         <Button
             android:id="@+id/member"
@@ -97,7 +94,7 @@
             android:textColor="#ACAAAA"
             android:background="@null"
             android:layout_marginTop="5dp"
-            android:fontFamily="@font/bmf"/>
+            android:fontFamily="@font/gmn"/>
     </LinearLayout>
 
 </RelativeLayout>

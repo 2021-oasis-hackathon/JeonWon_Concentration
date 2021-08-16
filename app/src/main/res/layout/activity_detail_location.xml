@@ -13,15 +13,6 @@
         android:layout_marginTop="10dp">
 
         <ImageView
-            android:layout_centerVertical="true"
-            android:id="@+id/backButton"
-            android:clickable="true"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/back"
-            android:layout_marginLeft="10dp"/>
-
-        <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/logotext"
@@ -44,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="전주시"
             android:textColor="#000000"
-            android:fontFamily="@font/bmf"
+            android:fontFamily="@font/gmb"
             android:textSize="30dp" />
 
         <LinearLayout
@@ -66,11 +57,21 @@
                         android:layout_width="100dp"
                         android:layout_height="match_parent">
 
-                        <ImageView
+                        <androidx.cardview.widget.CardView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:src="@drawable/j2"
-                            android:scaleType="fitXY"/>
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/j2"
+                                android:scaleType="fitXY"
+                                />
+                        </androidx.cardview.widget.CardView>
+
+
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -263,7 +264,7 @@
                     android:layout_centerInParent="true"
                     android:text="# 지도"
                     android:gravity="center"
-                    android:fontFamily="@font/bmf" />
+                    android:fontFamily="@font/gmm" />
 
             </RelativeLayout>
 
@@ -281,7 +282,7 @@
                     android:layout_centerInParent="true"
                     android:text="# 맛집"
                     android:gravity="center"
-                    android:fontFamily="@font/bmf" />
+                    android:fontFamily="@font/gmm" />
 
             </RelativeLayout>
 
@@ -299,7 +300,7 @@
                     android:layout_centerInParent="true"
                     android:text="# 힐링"
                     android:gravity="center"
-                    android:fontFamily="@font/bmf" />
+                    android:fontFamily="@font/gmm" />
 
             </RelativeLayout>
 
@@ -317,7 +318,7 @@
                     android:layout_centerInParent="true"
                     android:text="# 야외"
                     android:gravity="center"
-                    android:fontFamily="@font/bmf" />
+                    android:fontFamily="@font/gmm" />
 
             </RelativeLayout>
 
