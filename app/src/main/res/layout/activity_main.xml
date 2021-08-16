@@ -18,10 +18,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="1dp"
-        android:background="#FFFFFF"
         app:itemIconTint="@drawable/tab_color"
         app:itemTextColor="@drawable/tab_color"
         app:labelVisibilityMode="unlabeled"
+        android:background="@drawable/round_corner"
+        android:layout_margin="10dp"
+        android:elevation="2dp"
         app:menu="@menu/menu" />
 
 </RelativeLayout>
