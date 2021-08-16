@@ -146,10 +146,15 @@ public class BlogWriteActivity extends AppCompatActivity {
                 Log.d(TAG, key);
 
                 String childKey = myRefBlog.child("전주시").child("blog").child(key).push().getKey();
+                String likeKey = myRefBlog.child("전주시").child("blog").child(key).push().getKey();
 
-                myRefBlog.child("전주시").child("blog").child(key).setValue(new BlogMain(key, userProfile, strTitle, formatTime, strContent, blogCourseList.get(0).getImage(), "0", nickName, childKey));
+                myRefBlog.child("전주시").child("blog").child(key).setValue(new BlogMain(key, userProfile, strTitle, formatTime, strContent, blogCourseList.get(0).getImage(), "0", nickName, childKey, likeKey));
                 keys.add(key);
                 myRefBlog.child("전주시").child("blog").child(key).child(childKey).setValue(blogCourseList);
+
+                SharedPreferences sf = getSharedPreferences("user", MODE_PRIVATE);
+                String nickName = sf.getString("nickName", "");
+                myRefBlog.child("전주시").child("blog").child(key).child(likeKey).push().setValue(nickName);
 
                 title.setText("");
                 hashTag.setText("");

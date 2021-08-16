@@ -11,10 +11,11 @@ public class BlogMain {
     private String like;
     private String nickName;
     private String childKey;
+    private String likeKey;
 
     public BlogMain() {}
 
-    public BlogMain(String key, String profile, String title, String date, String content, String image, String like, String nickName, String childKey) {
+    public BlogMain(String key, String profile, String title, String date, String content, String image, String like, String nickName, String childKey, String likeKey) {
         this.profile = profile;
         this.title = title;
         this.date = date;
@@ -24,6 +25,15 @@ public class BlogMain {
         this.nickName = nickName;
         this.key = key;
         this.childKey = childKey;
+        this.likeKey = likeKey;
+    }
+
+    public String getLikeKey() {
+        return likeKey;
+    }
+
+    public void setLikeKey(String likeKey) {
+        this.likeKey = likeKey;
     }
 
     public String getKey() {

@@ -85,6 +85,7 @@ public class BlogListActivity extends Fragment {
                     Intent intent = new Intent(getActivity(), BlogListDetailActivity.class);
                     intent.putExtra("key", blogMainList.get(position).getKey());
                     intent.putExtra("childKey", blogMainList.get(position).getChildKey());
+                    intent.putExtra("likeKey", blogMainList.get(position).getLikeKey());
                     startActivity(intent);
                 }
             }
