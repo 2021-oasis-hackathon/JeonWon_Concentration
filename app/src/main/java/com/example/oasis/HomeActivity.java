@@ -47,10 +47,8 @@ public class HomeActivity extends Fragment {
         jbButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jnMap.setVisibility(View.GONE);
-                gMap.setVisibility(View.GONE);
-
-                jbMap.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(getActivity(), TestActivity.class);
+                startActivity(intent);
             }
         });
 
