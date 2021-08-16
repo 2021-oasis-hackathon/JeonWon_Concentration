@@ -5,6 +5,7 @@ public class User {
     private String id;
     private String pw;
     private String nickName;
+    private String profile;
 
     public User() {}
 
@@ -13,6 +14,14 @@ public class User {
         this.pw = pw;
         this.nickName = nickName;
     }
+
+    public User(String id, String pw, String nickName, String profile) {
+        this.id = id;
+        this.pw = pw;
+        this.nickName = nickName;
+        this.profile = profile;
+    }
+
 
     public String getId() {
         return id;
@@ -36,5 +45,13 @@ public class User {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 }
