@@ -33,56 +33,61 @@
         android:layout_centerInParent="true"
         android:gravity="center">
 
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            app:errorEnabled="true"
+            android:layout_height="50dp"
+            android:background="@drawable/login_id_edittext_design"
+            android:elevation="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="15dp">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:id="@+id/id"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="아이디"
-                app:counterEnabled="true"
-                app:counterMaxLength="3"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true" />
+                android:textColorHint="#7E7C7C"
+                android:background="@null"
+                android:layout_marginLeft="10dp"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            app:errorEnabled="true"
+            android:layout_height="50dp"
+            android:background="@drawable/login_id_edittext_design"
+            android:elevation="10dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp">
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="비밀번호"
+            <EditText
                 android:id="@+id/pw"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="비밀번호"
+                android:textColorHint="#7E7C7C"
+                android:background="@null"
+                android:layout_marginLeft="10dp"
                 android:inputType="textPassword"
                 app:hintEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:counterEnabled="true"
                 app:counterMaxLength="3" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="#7DC64E"
+            android:background="@drawable/login_button_design"
             android:textColor="#ffffff"
             android:text="로그인"
             android:textSize="15dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
             android:layout_marginTop="15dp"/>
 
         <Button
@@ -91,7 +96,8 @@
             android:layout_height="30dp"
             android:text="아이디가 없으신가요? 회원가입!"
             android:textColor="#ACAAAA"
-            android:background="@null"/>
+            android:background="@null"
+            android:layout_marginTop="5dp"/>
     </LinearLayout>
 
 </RelativeLayout>
