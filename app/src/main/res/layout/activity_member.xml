@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".MemberActivity">
 
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/logotext"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            />
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/center"
@@ -17,20 +33,35 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            tools:srcCompat="@drawable/logo" />
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="150dp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:src="@drawable/logo"/>-->
 
-        <ImageView
-            android:layout_below="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logot"
-            android:layout_marginTop="5dp"
-            android:layout_centerHorizontal="true"/>
+<!--        <ImageView-->
+<!--            android:layout_below="@+id/imageView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/logot"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:layout_centerHorizontal="true"/>-->
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/profile" />
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_marginTop="15dp"
@@ -61,7 +92,7 @@
                 android:id="@+id/idChecked"
                 android:background="@drawable/login_button_design"
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
+                android:layout_height="50dp"
                 android:text="중복체크"
                 android:textColor="#FFFFFF"
                 android:textSize="15dp"

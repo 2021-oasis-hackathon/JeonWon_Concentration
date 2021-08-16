@@ -30,43 +30,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/jb"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginLeft="120dp"
                 android:layout_marginRight="50dp"
                 />
 
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/gMap"
+                android:layout_marginLeft="155dp"
+                android:layout_marginTop="260dp"/>
 
             <ImageView
                 android:id="@+id/jnMap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/jn"
-                android:layout_marginTop="210dp"
+                android:layout_marginTop="220dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="40dp"/>
 
         </RelativeLayout>
-
-
-
-
     </RelativeLayout>
 
-
-
-
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:text="전주"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:background="@null"
-        android:textSize="20dp"
-        android:fontFamily="@font/bmf"
-        android:textColor="#00F7FF"/>
 
 </LinearLayout>

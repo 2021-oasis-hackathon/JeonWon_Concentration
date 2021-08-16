@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Oasis">
-        <activity android:name=".DetailLocationActivity"></activity>
+        <activity android:name=".BlogListDetailActivity"></activity>
+        <activity android:name=".BlogWriteActivity" />
+        <activity android:name=".DetailLocationActivity" />
         <activity
             android:name=".DetailLocationListActivity"
             android:theme="@style/Transparent" />
@@ -24,8 +26,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".MemberActivity" />
         <activity android:name=".SettingActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoadingActivity">
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

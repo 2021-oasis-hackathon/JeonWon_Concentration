@@ -29,6 +29,8 @@ import androidx.fragment.app.Fragment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyPageActivity extends Fragment {
 
@@ -36,6 +38,8 @@ public class MyPageActivity extends Fragment {
     int REQUEST_EXTERNAL_STORAGE_PERMISSON = 1002;
 
     private View v;
+
+    public static List<String> keys = new ArrayList<>();
 
     // init data
     private String userNickName;
@@ -59,6 +63,8 @@ public class MyPageActivity extends Fragment {
         SharedPreferences sf = getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE);
         userNickName = sf.getString("nickName", null);
         userId = sf.getString("id", null);
+        bitmap = StringToBitMap(sf.getString("profile", ""));
+
 
         nickName = (TextView) v.findViewById(R.id.nickName);
         loginButton = (TextView) v.findViewById(R.id.loginButton);
@@ -91,6 +97,7 @@ public class MyPageActivity extends Fragment {
         });
 
         profileImage = (ImageView) v.findViewById(R.id.profileImage);
+        profileImage.setImageBitmap(bitmap);
         profileImage.setEnabled(true);
         profileImage.setClickable(true);
         profileImage.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +146,11 @@ public class MyPageActivity extends Fragment {
         if (requestCode == 1 && resultCode == getActivity().RESULT_OK) {
             try {
                 bitmap = profileImage(data.getData());
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putString("profile", BitmapToString(bitmap));
+
                 if (bitmap != null) {
                     System.out.println(profileImage);
                     profileImage.setImageBitmap(bitmap);

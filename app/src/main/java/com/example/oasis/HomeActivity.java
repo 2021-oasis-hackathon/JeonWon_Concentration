@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +21,7 @@ public class HomeActivity extends Fragment {
 
     private ImageView jbMap, jnMap;
 
-    private Button button;
+    private Button button, gMap;
 
     public HomeActivity() {}
 
@@ -31,11 +32,9 @@ public class HomeActivity extends Fragment {
         v = inflater.inflate(R.layout.activity_home, container, false);
 
 
-
-
-
         jbMap = (ImageView) v.findViewById(R.id.jbMap);
         jnMap = (ImageView) v.findViewById(R.id.jnMap);
+        gMap = (Button) v.findViewById(R.id.gMap);
 
         jbMap.setEnabled(true);
         jbMap.setClickable(true);
@@ -50,16 +49,21 @@ public class HomeActivity extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-        button = (Button) v.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        
+        jnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CourseListActivity.class);
-                startActivity(intent);
+                Toast.makeText(getActivity(), "전남클릭!", Toast.LENGTH_SHORT).show();
             }
         });
+        
+        gMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "광주클릭!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
         return v;

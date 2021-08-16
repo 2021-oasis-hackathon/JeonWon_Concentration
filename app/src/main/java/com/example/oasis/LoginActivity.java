@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("id", user.getId());
                         editor.putString("pw", user.getPw());
                         editor.putString("nickName", user.getNickName());
+                        editor.putString("profile", user.getProfile());
 
                         editor.commit();
 

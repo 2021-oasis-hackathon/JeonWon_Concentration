@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private HomeActivity homeActivity;
     private RecommendListActivity recommendActivity;
-    private BlogActivity blogActivity;
+    private BlogListActivity blogActivity;
     private MyPageActivity myPageActivity;
 
     public static List<User> userList = new ArrayList<>();
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         homeActivity = new HomeActivity();
         recommendActivity = new RecommendListActivity();
-        blogActivity = new BlogActivity();
+        blogActivity = new BlogListActivity();
         myPageActivity = new MyPageActivity();
 
         Intent intent = getIntent();

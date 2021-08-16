@@ -33,6 +33,7 @@ public class DetailLocationListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailLocationListActivity.this, DetailLocationActivity.class);
+                intent.putExtra("location", "전주시");
                 startActivity(intent);
             }
         });
