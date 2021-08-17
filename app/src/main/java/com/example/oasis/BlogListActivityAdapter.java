@@ -32,7 +32,6 @@ public class BlogListActivityAdapter extends RecyclerView.Adapter<BlogListActivi
             rootView.setOnClickListener(onClick);
             profileImage = (ImageView) v.findViewById(R.id.profileImage);
             image = (ImageView) v.findViewById(R.id.image);
-
             nickName = (TextView) v.findViewById(R.id.nickName);
             title = (TextView) v.findViewById(R.id.title);
             content = (TextView) v.findViewById(R.id.content);

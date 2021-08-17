@@ -148,7 +148,7 @@ public class BlogWriteActivity extends AppCompatActivity {
                 String childKey = myRefBlog.child("전주시").child("blog").child(key).push().getKey();
                 String likeKey = myRefBlog.child("전주시").child("blog").child(key).push().getKey();
 
-                myRefBlog.child("전주시").child("blog").child(key).setValue(new BlogMain(key, userProfile, strTitle, formatTime, strContent, blogCourseList.get(0).getImage(), "0", nickName, childKey, likeKey));
+                myRefBlog.child("전주시").child("blog").child(key).setValue(new BlogMain(key, userProfile, strTitle, formatTime, strContent, blogCourseList.get(0).getImage(), "0", nickName, childKey, likeKey, strHashTag));
                 keys.add(key);
                 myRefBlog.child("전주시").child("blog").child(key).child(childKey).setValue(blogCourseList);
 

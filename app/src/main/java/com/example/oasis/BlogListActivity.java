@@ -107,8 +107,6 @@ public class BlogListActivity extends Fragment {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     BlogMain blogMain = snapshot1.getValue(BlogMain.class);
                     blogMainList.add(blogMain);
-                    Log.d(TAG, blogMain.getKey());
-                    Log.d(TAG, blogMain.getChildKey());
                     blogListActivityAdapter.notifyDataSetChanged();
 
 

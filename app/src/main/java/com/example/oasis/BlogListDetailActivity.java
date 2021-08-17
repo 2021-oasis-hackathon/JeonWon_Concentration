@@ -159,6 +159,7 @@ public class BlogListDetailActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 likeUserList.clear();
+                System.out.println(snapshot.getChildrenCount());
                 for(DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Log.d(TAG, "one");
                     String likeUser = snapshot1.getValue(String.class);
@@ -170,6 +171,7 @@ public class BlogListDetailActivity extends AppCompatActivity {
                         Log.d(TAG, snapshot1.getKey());
                     }
                 }
+                myRefBlog.child("전주시").child("blog").child(key).child("like").setValue(String.valueOf(likeUserList.size() - 1));
                 likeCount.setText(String.valueOf(likeUserList.size() - 1));
 
 

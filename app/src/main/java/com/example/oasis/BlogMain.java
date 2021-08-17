@@ -12,10 +12,11 @@ public class BlogMain {
     private String nickName;
     private String childKey;
     private String likeKey;
+    private String hashTag;
 
     public BlogMain() {}
 
-    public BlogMain(String key, String profile, String title, String date, String content, String image, String like, String nickName, String childKey, String likeKey) {
+    public BlogMain(String key, String profile, String title, String date, String content, String image, String like, String nickName, String childKey, String likeKey, String hashTag) {
         this.profile = profile;
         this.title = title;
         this.date = date;
@@ -26,6 +27,15 @@ public class BlogMain {
         this.key = key;
         this.childKey = childKey;
         this.likeKey = likeKey;
+        this.hashTag = hashTag;
+    }
+
+    public String getHashTag() {
+        return hashTag;
+    }
+
+    public void setHashTag(String hashTag) {
+        this.hashTag = hashTag;
     }
 
     public String getLikeKey() {
