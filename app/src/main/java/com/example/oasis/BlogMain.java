@@ -13,10 +13,13 @@ public class BlogMain {
     private String childKey;
     private String likeKey;
     private String hashTag;
+    private String location1;
+    private String location2;
 
     public BlogMain() {}
 
-    public BlogMain(String key, String profile, String title, String date, String content, String image, String like, String nickName, String childKey, String likeKey, String hashTag) {
+    public BlogMain(String key, String profile, String title, String date, String content, String image, String like, String nickName, String childKey, String likeKey, String hashTag
+    ,String location1, String location2) {
         this.profile = profile;
         this.title = title;
         this.date = date;
@@ -28,6 +31,24 @@ public class BlogMain {
         this.childKey = childKey;
         this.likeKey = likeKey;
         this.hashTag = hashTag;
+        this.location1 = location1;
+        this.location2 = location2;
+    }
+
+    public String getLocation1() {
+        return location1;
+    }
+
+    public void setLocation1(String location1) {
+        this.location1 = location1;
+    }
+
+    public String getLocation2() {
+        return location2;
+    }
+
+    public void setLocation2(String location2) {
+        this.location2 = location2;
     }
 
     public String getHashTag() {
