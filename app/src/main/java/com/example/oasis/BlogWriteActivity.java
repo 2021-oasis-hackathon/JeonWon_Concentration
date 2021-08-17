@@ -16,12 +16,17 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,8 +59,9 @@ public class BlogWriteActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
+    private RelativeLayout tagLayout;
     private EditText title, hashTag, content, courseContent;
-    private TextView textView;
+    private TextView textView, textView2, tagContent;
     private ImageView courseImage;
     private Button addCourse, addBlog;
 
@@ -94,6 +100,27 @@ public class BlogWriteActivity extends AppCompatActivity {
         courseImage = (ImageView) findViewById(R.id.courseImage);
         addCourse = (Button) findViewById(R.id.addCourse);
         addBlog = (Button) findViewById(R.id.addBlog);
+        tagLayout = (RelativeLayout) findViewById(R.id.tagLayout);
+        tagContent = (TextView) findViewById(R.id.tagContent);
+        textView2 = (TextView) findViewById(R.id.textView2);
+
+//        hashTag.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//
+//                String searchData = hashTag.getText().toString();
+//
+//                if (actionId == EditorInfo.IME_ACTION_DONE) {
+//                    Log.d(TAG, searchData);
+//                }
+//
+//                hashTag.setVisibility(View.GONE);
+//                tagLayout.setVisibility(View.VISIBLE);
+//                tagContent.setText(searchData);
+//                Log.d(TAG, searchData);
+//                return true;
+//            }
+//        });
 
         courseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +144,7 @@ public class BlogWriteActivity extends AppCompatActivity {
                     courseImage.setImageBitmap(image);
                     courseContent.setText("");
                     textView.setText("클릭하여 이미지를 추가해 주세요");
+                    textView2.setText("");
                 }
 
             }
