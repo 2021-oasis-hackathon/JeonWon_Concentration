@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,14 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -37,7 +46,16 @@ public class MyPageActivity extends Fragment {
     private static final String TAG = "MyPageActivity";
     int REQUEST_EXTERNAL_STORAGE_PERMISSON = 1002;
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRefBlog = database.getReference("blog");
+
     private View v;
+
+    private RecyclerView recyclerView;
+    BlogListActivityAdapter blogListActivityAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+    private List<BlogMain> blogMainList = new ArrayList<>();
 
     public static List<String> keys = new ArrayList<>();
 
@@ -49,6 +67,8 @@ public class MyPageActivity extends Fragment {
     private TextView nickName, loginButton;
 
     private Bitmap bitmap;
+
+    private ProgressBar progress;
 
 
 
@@ -65,6 +85,28 @@ public class MyPageActivity extends Fragment {
         userId = sf.getString("id", null);
         bitmap = StringToBitMap(sf.getString("profile", ""));
 
+        recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+
+        progress = (ProgressBar) v.findViewById(R.id.progress);
+
+        blogListActivityAdapter = new BlogListActivityAdapter(blogMainList, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Object obj = v.getTag();
+                if(obj != null){
+                    final int position = (int) obj;
+                    Intent intent = new Intent(getActivity(), BlogListDetailActivity.class);
+                    intent.putExtra("key", blogMainList.get(position).getKey());
+                    intent.putExtra("childKey", blogMainList.get(position).getChildKey());
+                    intent.putExtra("likeKey", blogMainList.get(position).getLikeKey());
+                    startActivity(intent);
+                }
+            }
+        });
+        recyclerView.setAdapter(blogListActivityAdapter);
 
         nickName = (TextView) v.findViewById(R.id.nickName);
         loginButton = (TextView) v.findViewById(R.id.loginButton);
@@ -130,14 +172,34 @@ public class MyPageActivity extends Fragment {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    public void onStart() {
+        super.onStart();
+        blogMainList.clear();
+        myRefBlog.child("전주시").child("blog").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    BlogMain blogMain = snapshot1.getValue(BlogMain.class);
+                    if (blogMain.getNickName().equals(userNickName)) {
+                        blogMainList.add(blogMain);
+                    }
+
+                    blogListActivityAdapter.notifyDataSetChanged();
+                }
+
+                progress.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
