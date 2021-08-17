@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Oasis">
-        <activity android:name=".BlogListDetailActivity"></activity>
+        <activity android:name=".RecommendListDetailActivity"></activity>
+        <activity android:name=".BlogListDetailActivity" />
         <activity android:name=".BlogWriteActivity" />
         <activity android:name=".DetailLocationActivity" />
         <activity

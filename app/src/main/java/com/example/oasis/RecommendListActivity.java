@@ -1,5 +1,6 @@
 package com.example.oasis;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -50,6 +51,8 @@ public class RecommendListActivity extends Fragment {
     private TextView title;
     private TextView cafe, festival, foodStore;
 
+    public static String setTitle, setLocation, setTime, setImage;
+
 
     private View v;
     public RecommendListActivity() {}
@@ -68,8 +71,6 @@ public class RecommendListActivity extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         ((LinearLayoutManager) layoutManager).setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecommendListActivityAdapter(recommendList);
-        recyclerView.setAdapter(mAdapter);
 
         cafe = (TextView) v.findViewById(R.id.cafe);
         festival = (TextView) v.findViewById(R.id.festival);
@@ -97,7 +98,21 @@ public class RecommendListActivity extends Fragment {
                     }
                 }
 
-                mAdapter = new RecommendListActivityAdapter(filterList);
+                mAdapter = new RecommendListActivityAdapter(filterList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if (obj != null) {
+                            final int position = (int) obj;
+                            setTitle = filterList.get(position).getContent();
+                            setLocation = filterList.get(position).getLocation();
+                            setTime = filterList.get(position).getTime();
+                            setImage = filterList.get(position).getImage();
+                            Intent intent = new Intent(getActivity(), RecommendListDetailActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
                 recyclerView.setAdapter(mAdapter);
 
             }
@@ -116,7 +131,21 @@ public class RecommendListActivity extends Fragment {
                     }
                 }
 
-                mAdapter = new RecommendListActivityAdapter(filterList);
+                mAdapter = new RecommendListActivityAdapter(filterList , new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if (obj != null) {
+                            final int position = (int) obj;
+                            setTitle = filterList.get(position).getContent();
+                            setLocation = filterList.get(position).getLocation();
+                            setTime = filterList.get(position).getTime();
+                            setImage = filterList.get(position).getImage();
+                            Intent intent = new Intent(getActivity(), RecommendListDetailActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
                 recyclerView.setAdapter(mAdapter);
             }
        });
@@ -134,36 +163,131 @@ public class RecommendListActivity extends Fragment {
                     }
                 }
 
-                mAdapter = new RecommendListActivityAdapter(filterList);
+                mAdapter = new RecommendListActivityAdapter(filterList , new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if (obj != null) {
+                            final int position = (int) obj;
+                            setTitle = filterList.get(position).getContent();
+                            setLocation = filterList.get(position).getLocation();
+                            setTime = filterList.get(position).getTime();
+                            setImage = filterList.get(position).getImage();
+                            Intent intent = new Intent(getActivity(), RecommendListDetailActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
                 recyclerView.setAdapter(mAdapter);
             }
         });
 
         progress = (ProgressBar) v.findViewById(R.id.progress);
 
-//        Bitmap bitmap1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.j1);
-//        Bitmap bitmap2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.j2);
-//        Bitmap bitmap3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.j3);
-//
-//        myRefBlog.child("전주시").child("recommend").push().setValue(
-//                new Recommend("축제", "축제1", BitmapToString(bitmap1)));
-//
-//        myRefBlog.child("전주시").child("recommend").push().setValue(
-//                new Recommend("축제", "축제2", BitmapToString(bitmap2)));
-//
-//        myRefBlog.child("전주시").child("recommend").push().setValue(
-//                new Recommend("축제", "축제3", BitmapToString(bitmap3)));
-//
-//        myRefBlog.child("전주시").child("recommend").push().setValue(
-//                new Recommend("맛집", "맛집1", BitmapToString(bitmap2)));
-//
-//        myRefBlog.child("전주시").child("recommend").push().setValue(
-//                new Recommend("맛집", "맛집2", BitmapToString(bitmap3)));
-//
-//        myRefBlog.child("전주시").child("recommend").push().setValue(
-//                new Recommend("맛집", "맛집3", BitmapToString(bitmap1)));
+        //title, content, image, time, location
+
+/*
+        Bitmap bitmap1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.f1);
+        Bitmap bitmap2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.f2);
+        Bitmap bitmap3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.f3);
+        Bitmap bitmap4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.f4);
 
 
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("축제", "전통의 전주, 살아있는 전라감영", BitmapToString(bitmap1), "2021.07.01. (목) ~ 2021.09.30. (목)", "전라감영" ));
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("축제", "전주 한옥마을 경기전 '왕과의 산책'", BitmapToString(bitmap2), "2021.05.22. (토) ~ 2021.10.02. (토)", "전주 한옥마을 경기전" ));
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("축제", "익산 문화재 야행", BitmapToString(bitmap3), "2021.10.08. (금) ~ 2021.10.10. (일)", "백제왕궁(익산왕궁리유적), 탐리마을 일원" ));
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("축제", "군산문화재야행", BitmapToString(bitmap4), "2021.09.09. (목) ~ 2021.09.11. (토)", "군산 내항 및 원도심 일원" ));
+
+        Bitmap bitmap11 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s1);
+        Bitmap bitmap22 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s2);
+        Bitmap bitmap33 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s3);
+        Bitmap bitmap44 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s4);
+
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("맛집", "피스비 (양식)", BitmapToString(bitmap11), "매일 11:30 - 21:00", "전라북도 전주시 덕진구 권삼득로 319-1" ));
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("맛집", "통집", BitmapToString(bitmap22), "매일 10:00 – 02:00 일요일 17:00 – 02:00", "전북 전주시 덕진구 삼송1길 35" ));
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("맛집", "서양주택(양식)", BitmapToString(bitmap33), "매일 11:00 – 22:00", "전라북도 전주시 완산구 전주객사2길 40" ));
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("맛집", "경양카츠", BitmapToString(bitmap44), "매일 11:30 - 21:00", "전북 전주시 완산구 전주객사4길 47 1층 경양카츠" ));
+
+        Bitmap bitmap111 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p1);
+        Bitmap bitmap222 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p2);
+        Bitmap bitmap333 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p3);
+        Bitmap bitmap444 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p5);
+
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("카페", "NOAH", BitmapToString(bitmap111), "매일 09:30 ~ 23:59 연중무휴", "전북 전주시 덕진구 편운로 25" ));
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("카페", "그날의 온도", BitmapToString(bitmap222), "평일 11:00 ~ 20:30", "전북 전주시 덕진구 원동로 45" ));
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("카페", "BLEU", BitmapToString(bitmap333), "매일 11:00 ~ 22:00", "전북 전주시 완산구 태진로 58-8" ));
+
+        myRefBlog.child("전주시").child("recommend").push().setValue(
+                new Recommend("카페", "빈타이", BitmapToString(bitmap444), "매일 12:00 ~ 23:00", "전북 전주시 덕진구 명륜3길 10-4" ));
+
+*/
+
+        myRefBlog.child("전주시").child("recommend").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                recommendList.clear();
+                for(DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    Recommend recommend = snapshot1.getValue(Recommend.class);
+                    recommendList.add(recommend);
+                }
+                //mAdapter.notifyDataSetChanged();
+
+
+
+
+                filterList.clear();
+                for (Recommend recommend : recommendList) {
+                    if(recommend.getTitle().equals("카페")) {
+                        filterList.add(recommend);
+                    }
+                }
+
+                mAdapter = new RecommendListActivityAdapter(filterList , new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if (obj != null) {
+                            final int position = (int) obj;
+                            setTitle = filterList.get(position).getContent();
+                            setLocation = filterList.get(position).getLocation();
+                            setTime = filterList.get(position).getTime();
+                            setImage = filterList.get(position).getImage();
+                            Intent intent = new Intent(getActivity(), RecommendListDetailActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+                recyclerView.setAdapter(mAdapter);
+                progress.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return v;
 
@@ -179,36 +303,6 @@ public class RecommendListActivity extends Fragment {
     public void onStart() {
         super.onStart();
         //recommendList.clear();
-        myRefBlog.child("전주시").child("recommend").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                recommendList.clear();
-                for(DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    Recommend recommend = snapshot1.getValue(Recommend.class);
-                    recommendList.add(recommend);
-                }
-                //mAdapter.notifyDataSetChanged();
-
-
-                filterList.clear();
-                for (Recommend recommend : recommendList) {
-                    if(recommend.getTitle().equals("카페")) {
-                        filterList.add(recommend);
-                    }
-                }
-
-                mAdapter = new RecommendListActivityAdapter(filterList);
-                recyclerView.setAdapter(mAdapter);
-                progress.setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
 
     }
 

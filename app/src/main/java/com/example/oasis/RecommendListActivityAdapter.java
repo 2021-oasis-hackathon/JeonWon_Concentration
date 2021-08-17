@@ -16,23 +16,29 @@ import java.util.List;
 public class RecommendListActivityAdapter extends RecyclerView.Adapter<RecommendListActivityAdapter.MyViewHolder> {
 
     private List<Recommend> dataList;
-
+    static public View.OnClickListener onClick;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
+        View rootView;
         private TextView content;
         private ImageView image;
 
         public MyViewHolder(View v) {
             super(v);
 
+            rootView = v;
+            rootView.setEnabled(true);
+            rootView.setClickable(true);
+            rootView.setOnClickListener(onClick);
             content = (TextView) v.findViewById(R.id.content);
             image = (ImageView) v.findViewById(R.id.image);
         }
     }
 
-    public RecommendListActivityAdapter(List<Recommend> list) {
+    public RecommendListActivityAdapter(List<Recommend> list, View.OnClickListener onClickListener) {
         dataList = list;
+        onClick = onClickListener;
     }
 
     @Override
@@ -48,6 +54,7 @@ public class RecommendListActivityAdapter extends RecyclerView.Adapter<Recommend
     @Override
     public void onBindViewHolder(RecommendListActivityAdapter.MyViewHolder holder, int position) {
 
+        holder.rootView.setTag(position);
         holder.content.setText(dataList.get(position).getContent());
         holder.image.setImageBitmap(StringToBitMap(dataList.get(position).getImage()));
 
