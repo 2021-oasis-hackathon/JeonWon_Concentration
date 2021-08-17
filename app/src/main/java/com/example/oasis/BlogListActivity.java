@@ -100,10 +100,11 @@ public class BlogListActivity extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        blogMainList.clear();
+
         myRefBlog.child("전주시").child("blog").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                blogMainList.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     BlogMain blogMain = snapshot1.getValue(BlogMain.class);
                     blogMainList.add(blogMain);
