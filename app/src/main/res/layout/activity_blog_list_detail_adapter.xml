@@ -17,6 +17,7 @@
             android:scaleType="fitXY"/>
 
         <TextView
+            android:layout_marginTop="15dp"
             android:id="@+id/content"
             android:layout_below="@+id/imageView"
             android:layout_width="wrap_content"

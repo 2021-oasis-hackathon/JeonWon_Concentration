@@ -40,7 +40,7 @@ public class BlogListDetailActivity extends AppCompatActivity {
     String likeKey;
     String nickName;
 
-    private TextView title, likeCount, content;
+    private TextView title, likeCount, content, hashTag;
     private ImageView like;
 
     List<String> likeUserList = new ArrayList<>();
@@ -56,6 +56,7 @@ public class BlogListDetailActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.title);
         likeCount = (TextView) findViewById(R.id.likeCount);
         content = (TextView) findViewById(R.id.content);
+        hashTag = (TextView) findViewById(R.id.hashTag);
 
         like = (ImageView) findViewById(R.id.like);
         like.setEnabled(true);
@@ -127,7 +128,9 @@ public class BlogListDetailActivity extends AppCompatActivity {
                 title.setText(blogMain.getTitle());
                 content.setText(blogMain.getContent());
                 likeCount.setText(blogMain.getLike());
+                hashTag.setText(blogMain.getHashTag());
                 nickName = blogMain.getNickName();
+
             }
 
             @Override
