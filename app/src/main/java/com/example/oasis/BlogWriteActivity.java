@@ -161,6 +161,7 @@ public class BlogWriteActivity extends AppCompatActivity {
                 content.setText("");
                 blogCourseList.clear();
                 mAdapter.notifyDataSetChanged();
+                finish();
 
 
 
