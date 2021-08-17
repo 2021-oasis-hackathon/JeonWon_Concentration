@@ -101,12 +101,6 @@ public class BlogListDetailActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
         SharedPreferences sf = getSharedPreferences("user", MODE_PRIVATE);
 
         userNickName = sf.getString("nickName", null);
@@ -119,48 +113,11 @@ public class BlogListDetailActivity extends AppCompatActivity {
         likeKey2 = myRefBlog.child("전주시").child("blog").child(key).child(likeKey).push().getKey();
 
 
+    }
 
-        myRefBlog.child("전주시").child("blog").child(key).child(likeKey).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                likeUserList.clear();
-                for(DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    Log.d(TAG, "one");
-                    String likeUser = snapshot1.getValue(String.class);
-                    likeUserList.add(likeUser);
-
-                    if (userNickName.equals(likeUser)) {
-                        like.setImageResource(R.drawable.like);
-                        likeKey2 = snapshot1.getKey();
-                        Log.d(TAG, snapshot1.getKey());
-                    }
-                }
-
-                Log.d(TAG, String.valueOf(likeUserList.size() - 1));
-                likeCount.setText(String.valueOf(likeUserList.size() - 1));
-
-//                Log.d(TAG,String.valueOf(likeUserList.size())+ " ~~~~~~~~~~~~~~~~~~~~~~~~~");
-//                likeCount.setText(String.valueOf(likeUserList.size() - 1));
-//                for (String user : likeUserList) {
-//                    if (user.equals(userNickName)) {
-//                        like.setImageResource(R.drawable.like);
-//                        return;
-//                    }
-//                }
-
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-
-
-
+    @Override
+    public void onStart() {
+        super.onStart();
 
         myRefBlog.child("전주시").child("blog").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -191,6 +148,33 @@ public class BlogListDetailActivity extends AppCompatActivity {
                 mAdapter.notifyDataSetChanged();
 
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        myRefBlog.child("전주시").child("blog").child(key).child(likeKey).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                likeUserList.clear();
+                for(DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    Log.d(TAG, "one");
+                    String likeUser = snapshot1.getValue(String.class);
+                    likeUserList.add(likeUser);
+
+                    if (userNickName.equals(likeUser)) {
+                        like.setImageResource(R.drawable.like);
+                        likeKey2 = snapshot1.getKey();
+                        Log.d(TAG, snapshot1.getKey());
+                    }
+                }
+                likeCount.setText(String.valueOf(likeUserList.size() - 1));
+
+
+            }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
