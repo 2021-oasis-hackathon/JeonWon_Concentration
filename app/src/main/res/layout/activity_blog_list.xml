@@ -15,7 +15,7 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="전주시 BLOG"
+            android:text="전주시 RLOG"
             android:textColor="#42C458"
             android:fontFamily="@font/gmb"
             android:textSize="30dp"
