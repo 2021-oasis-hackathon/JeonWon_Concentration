@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/logotext"
+            android:src="@drawable/logo"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             />
@@ -125,7 +125,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="한옥마음"
+                            android:text="한옥마을"
                             android:textColor="#ffffff"
                             android:fontFamily="@font/bmf"
                             android:textSize="20dp"
