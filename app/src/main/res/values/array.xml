@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array">
+        <item>전라북도</item>
+        <item>광주</item>
+        <item>전라남도</item>
+    </string-array>
+
+</resources>

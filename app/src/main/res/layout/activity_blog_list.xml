@@ -10,17 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
-        <TextView
-            android:layout_centerVertical="true"
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="전주시 RLOG"
-            android:textColor="#42C458"
-            android:fontFamily="@font/gmb"
-            android:textSize="30dp"
-            android:layout_marginLeft="10dp"/>
-
 
         <ImageView
             android:layout_width="40dp"
@@ -37,6 +26,17 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/top"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전주시 RLOG"
+            android:textColor="#42C458"
+            android:fontFamily="@font/gmb"
+            android:textSize="30dp"
+            android:layout_marginLeft="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/blogActivityRecyclerView"
