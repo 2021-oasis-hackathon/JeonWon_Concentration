@@ -1,23 +1,19 @@
 package com.example.oasis;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.util.Base64;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,11 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlogListActivity extends Fragment {
+public class RecommendListDetailActivity extends AppCompatActivity {
 
-    private static final String TAG = "BlogListActivity";
-
-    private View v;
+    private static final String TAG = "RecommendListDetailActivity";
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRefBlog = database.getReference("blog");
@@ -41,39 +35,42 @@ public class BlogListActivity extends Fragment {
     BlogListActivityAdapter blogListActivityAdapter;
     RecyclerView.LayoutManager layoutManager;
 
-
     private List<BlogMain> blogMainList = new ArrayList<>();
 
-    private ImageView pen;
-    private RelativeLayout writeBlog;
+    public String setTitle, setLocation, setTime, setImage;
 
+    private TextView title, location, time;
+    private ImageView image;
     private ProgressBar progress;
 
-  
-    public BlogListActivity() {}
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recommend_list_detail);
 
-        v = inflater.inflate(R.layout.activity_blog_list, container, false);
-        
-        pen = (ImageView) v.findViewById(R.id.pen);
-        pen.setColorFilter(Color.parseColor("#ffffff"));
-        writeBlog = (RelativeLayout) v.findViewById(R.id.writeBlog);
-        writeBlog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), BlogWriteActivity.class);
-                startActivity(intent);
-            }
-        });
+        setTitle = RecommendListActivity.setTitle;
+        setLocation = RecommendListActivity.setLocation;
+        setTime = RecommendListActivity.setTime;
+        setImage = RecommendListActivity.setImage;
 
-        progress = (ProgressBar) v.findViewById(R.id.progress);
+        title = (TextView) findViewById(R.id.title);
+        location = (TextView) findViewById(R.id.location);
+        time = (TextView) findViewById(R.id.time);
+        image = (ImageView) findViewById(R.id.image);
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.blogActivityRecyclerView);
+        progress = (ProgressBar) findViewById(R.id.progress);
+
+        title.setText(setTitle);
+        location.setText(setLocation);
+        time.setText(setTime);
+        image.setImageBitmap(StringToBitMap(setImage));
+
+
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(RecommendListDetailActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
         blogListActivityAdapter = new BlogListActivityAdapter(blogMainList, new View.OnClickListener() {
@@ -82,7 +79,7 @@ public class BlogListActivity extends Fragment {
                 Object obj = v.getTag();
                 if(obj != null){
                     final int position = (int) obj;
-                    Intent intent = new Intent(getActivity(), BlogListDetailActivity.class);
+                    Intent intent = new Intent(RecommendListDetailActivity.this, BlogListDetailActivity.class);
                     intent.putExtra("key", blogMainList.get(position).getKey());
                     intent.putExtra("childKey", blogMainList.get(position).getChildKey());
                     intent.putExtra("likeKey", blogMainList.get(position).getLikeKey());
@@ -91,9 +88,20 @@ public class BlogListActivity extends Fragment {
             }
         });
         recyclerView.setAdapter(blogListActivityAdapter);
-        
 
-        return v;
+
+    }
+
+
+    public Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
 
     }
 
@@ -107,8 +115,11 @@ public class BlogListActivity extends Fragment {
                 blogMainList.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     BlogMain blogMain = snapshot1.getValue(BlogMain.class);
-                    blogMainList.add(blogMain);
-                    blogListActivityAdapter.notifyDataSetChanged();
+                    if (setTitle.equals(blogMain.getTitle())) {
+                        blogMainList.add(blogMain);
+                        blogListActivityAdapter.notifyDataSetChanged();
+                    }
+
 
 
 

@@ -26,12 +26,13 @@ public class BlogCourseAdapter extends RecyclerView.Adapter<BlogCourseAdapter.My
         View rootView;
         private ImageView imageView;
         private ImageView delete_image;
-        private TextView content;
+        private TextView content, courseCount;
 
         public MyViewHolder(View v) {
             super(v);
             imageView = v.findViewById(R.id.imageView);
             delete_image = v.findViewById(R.id.delete_image);
+            courseCount = v.findViewById(R.id.courseCount);
             content = v.findViewById(R.id.content);
             delete_image.setClickable(true);
             delete_image.setEnabled(true);
@@ -60,6 +61,8 @@ public class BlogCourseAdapter extends RecyclerView.Adapter<BlogCourseAdapter.My
         holder.delete_image.setTag(position);
         holder.imageView.setImageBitmap(StringToBitMap(item.get(position).getImage()));
         holder.content.setText(item.get(position).getContent());
+        holder.courseCount.setText("코스 " + String.valueOf(position + 1));
+        //holder.count.setText((position + 1));
 
     }
 

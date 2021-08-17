@@ -29,4 +29,9 @@
         android:fontStyle="normal"
         android:fontWeight="900"
         android:font="@font/gmb"/>
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="900"
+        android:font="@font/poto"/>
 </font-family>

@@ -39,17 +39,54 @@
             android:fontFamily="@font/gmb"
             android:textSize="25dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/blogListDetailActivityRecyclerView" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="3dp">
+
+            <RelativeLayout
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:background="@drawable/edittext_design">
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/hashTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="제목"
+                    android:fontFamily="@font/gmm"
+                    android:textSize="18dp"/>
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginTop="5dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/blogListDetailActivityRecyclerView" />
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/like"
@@ -69,15 +106,22 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000"
+            android:layout_marginTop="5dp"/>
+
+
         <TextView
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/gmm"
             android:text="제목"
             android:textColor="#000000"
-            android:fontFamily="@font/gmm"
-            android:textSize="22dp"
-            android:layout_marginTop="10dp"/>
+            android:textSize="22dp" />
 
     </LinearLayout>
 
