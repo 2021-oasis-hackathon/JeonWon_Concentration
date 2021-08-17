@@ -218,6 +218,7 @@
             android:layout_height="40dp"
             android:orientation="horizontal"
             android:background="@drawable/edittext_design"
+            android:elevation="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp">
@@ -256,6 +257,7 @@
                 android:layout_width="40dp"
                 android:layout_height="30dp"
                 android:background="@drawable/hashtag_design"
+                android:elevation="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp">
 
@@ -263,7 +265,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="# 지도"
+                    android:text="# 데이트 코스"
                     android:gravity="center"
                     android:fontFamily="@font/gmm" />
 
@@ -275,13 +277,14 @@
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:elevation="5dp"
                 android:background="@drawable/hashtag_design">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="# 맛집"
+                    android:text="# 맛집 코스"
                     android:gravity="center"
                     android:fontFamily="@font/gmm" />
 
@@ -293,35 +296,36 @@
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:elevation="5dp"
                 android:background="@drawable/hashtag_design">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="# 힐링"
+                    android:fontFamily="@font/gmm"
                     android:gravity="center"
-                    android:fontFamily="@font/gmm" />
+                    android:text="# 예술 코스" />
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/hashtag_design">
+<!--            <RelativeLayout-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:background="@drawable/hashtag_design">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="# 야외"
-                    android:gravity="center"
-                    android:fontFamily="@font/gmm" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:text="# 야외"-->
+<!--                    android:gravity="center"-->
+<!--                    android:fontFamily="@font/gmm" />-->
 
-            </RelativeLayout>
+<!--            </RelativeLayout>-->
 
         </LinearLayout>
 
