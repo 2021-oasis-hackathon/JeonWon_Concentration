@@ -28,7 +28,7 @@ public class HomeActivity extends Fragment {
     private View v;
 
     private LinearLayout jbMap, jnMap;
-    private RelativeLayout jeonJu, jeongeup, gunsan, buan, gochang, imsil, yeosu, suncheon, wando, mokpo, boseong, haenam;
+    private RelativeLayout jeonJu, jeongeup, gunsan, buan, gochang, imsil, yeosu, suncheon, wando, mokpo, boseong, haenam, gwangju;
 
     public static ArrayList<String> jbLocation = new ArrayList<>();
     public static ArrayList<String> jnLocation = new ArrayList<>();
@@ -80,6 +80,8 @@ public class HomeActivity extends Fragment {
         boseong = (RelativeLayout) v.findViewById(R.id.boseong);
         haenam = (RelativeLayout) v.findViewById(R.id.haenam);
 
+        gwangju = (RelativeLayout) v.findViewById(R.id.gwangju);
+
 
         arrayList = new ArrayList<>();
         arrayList.add("전라북도");
@@ -93,23 +95,36 @@ public class HomeActivity extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (arrayList.get(i).equals("전라북도")) {
                     jnMap.setVisibility(View.GONE);
+                    gwangju.setVisibility(View.GONE);
                     jbMap.setVisibility(View.VISIBLE);
+
 
                     selectLocation = "전라북도";
                 } else if (arrayList.get(i).equals("전라남도")) {
                     jbMap.setVisibility(View.GONE);
+                    gwangju.setVisibility(View.GONE);
                     jnMap.setVisibility(View.VISIBLE);
                     selectLocation = "전라남도";
                 } else {
+                    jnMap.setVisibility(View.GONE);
+                    jbMap.setVisibility(View.GONE);
+                    gwangju.setVisibility(View.VISIBLE);
                     selectLocation = "광주";
-                    Intent intent = new Intent(getActivity(), DetailLocationActivity.class);
-                    intent.putExtra("location", "광주");
-                    startActivity(intent);
+
                 }
                 Log.d(TAG, selectLocation);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { }
+        });
+
+        gwangju.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DetailLocationActivity.class);
+                intent.putExtra("location", "광주");
+                startActivity(intent);
+            }
         });
 
         jeonJu.setOnClickListener(new View.OnClickListener() {
