@@ -2,6 +2,7 @@ package com.example.oasis;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -47,7 +48,7 @@ public class RecommendListActivity extends Fragment {
     private ProgressBar progress;
 
     private TextView title;
-    private Button cafe, festival, foodStore;
+    private TextView cafe, festival, foodStore;
 
 
     private View v;
@@ -70,15 +71,25 @@ public class RecommendListActivity extends Fragment {
         mAdapter = new RecommendListActivityAdapter(recommendList);
         recyclerView.setAdapter(mAdapter);
 
-        cafe = (Button) v.findViewById(R.id.cafe);
-        festival = (Button) v.findViewById(R.id.festival);
-        foodStore = (Button) v.findViewById(R.id.foodStore);
+        cafe = (TextView) v.findViewById(R.id.cafe);
+        festival = (TextView) v.findViewById(R.id.festival);
+        foodStore = (TextView) v.findViewById(R.id.foodStore);
+
+        cafe.setEnabled(true);
+        cafe.setClickable(true);
+
+        festival.setEnabled(true);
+        festival.setClickable(true);
+
+        foodStore.setEnabled(true);
+        foodStore.setClickable(true);
 
         cafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 title.setText("카페");
-
+                initTextBackgroundColor();
+                cafe.setTextColor(Color.parseColor("#42C458"));
                 filterList.clear();
                 for (Recommend recommend : recommendList) {
                     if(recommend.getTitle().equals("카페")) {
@@ -96,7 +107,8 @@ public class RecommendListActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 title.setText("축제, 전시회");
-
+                initTextBackgroundColor();
+                festival.setTextColor(Color.parseColor("#42C458"));
                 filterList.clear();
                 for (Recommend recommend : recommendList) {
                     if(recommend.getTitle().equals("축제")) {
@@ -113,7 +125,8 @@ public class RecommendListActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 title.setText("맛집");
-
+                initTextBackgroundColor();
+                foodStore.setTextColor(Color.parseColor("#42C458"));
                 filterList.clear();
                 for (Recommend recommend : recommendList) {
                     if(recommend.getTitle().equals("맛집")) {
@@ -154,6 +167,12 @@ public class RecommendListActivity extends Fragment {
 
         return v;
 
+    }
+
+    private void initTextBackgroundColor() {
+        cafe.setTextColor(Color.parseColor("#000000"));
+        festival.setTextColor(Color.parseColor("#000000"));
+        foodStore.setTextColor(Color.parseColor("#000000"));
     }
 
     @Override

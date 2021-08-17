@@ -82,38 +82,66 @@
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
 
-        <Button
-            android:layout_marginTop="40dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/shape_button_design"
+            android:layout_height="1dp"
+            android:background="#000000"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
             android:id="@+id/cafe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="카페"
-            android:textColor="#ffffff"
-            android:fontFamily="@font/gmb"
+            android:fontFamily="@font/gmm"
+            android:textColor="#42C458"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="17dp"
             android:textSize="18dp"/>
 
-        <Button
-            android:layout_marginTop="20dp"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/shape_button_design"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <TextView
             android:id="@+id/festival"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="축제, 전시회"
-            android:textColor="#ffffff"
-            android:fontFamily="@font/gmb"
+            android:fontFamily="@font/gmm"
+            android:textColor="#000000"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="17dp"
             android:textSize="18dp"/>
 
-        <Button
-            android:layout_marginTop="20dp"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/shape_button_design"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <TextView
             android:id="@+id/foodStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="맛집"
-            android:textColor="#ffffff"
-            android:fontFamily="@font/gmb"
+            android:fontFamily="@font/gmm"
+            android:textColor="#000000"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="17dp"
             android:textSize="18dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
 
 
 
