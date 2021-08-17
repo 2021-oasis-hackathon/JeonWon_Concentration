@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +19,9 @@ public class HomeActivity extends Fragment {
 
     private View v;
 
-    private ImageView jMap, jbMap;
-    private TextView textView;
+    private ImageView jbMap, jnMap;
 
-    private Button button;
+    private Button button, gMap;
 
     public HomeActivity() {}
 
@@ -32,41 +31,39 @@ public class HomeActivity extends Fragment {
 
         v = inflater.inflate(R.layout.activity_home, container, false);
 
-        jMap = (ImageView) v.findViewById(R.id.jMap);
-        jbMap = (ImageView) v.findViewById(R.id.jbMap);
 
-        jMap.setEnabled(true);
-        jMap.setClickable(true);
+        jbMap = (ImageView) v.findViewById(R.id.jbMap);
+        jnMap = (ImageView) v.findViewById(R.id.jnMap);
+        gMap = (Button) v.findViewById(R.id.gMap);
 
         jbMap.setEnabled(true);
         jbMap.setClickable(true);
 
-        textView = (TextView) v.findViewById(R.id.textView);
-        textView.setEnabled(true);
-        textView.setClickable(true);
+        jnMap.setEnabled(true);
+        jnMap.setClickable(true);
 
-        textView.setOnClickListener(new View.OnClickListener(){
+        jbMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jbMap.setVisibility(View.GONE);
-            }
-        });
-
-        jMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                jbMap.setVisibility(View.VISIBLE);
-            }
-        });
-
-        button = (Button) v.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CourseListActivity.class);
+                Intent intent = new Intent(getActivity(), DetailLocationListActivity.class);
                 startActivity(intent);
             }
         });
+        
+        jnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "전남클릭!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        
+        gMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "광주클릭!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
         return v;

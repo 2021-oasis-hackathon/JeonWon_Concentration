@@ -1,5 +1,8 @@
 package com.example.oasis;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +20,14 @@ public class RecommendListActivityAdapter extends RecyclerView.Adapter<Recommend
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView place, likeCount;
+        private TextView content;
         private ImageView image;
 
         public MyViewHolder(View v) {
             super(v);
 
-            place = (TextView) v.findViewById(R.id.place);
+            content = (TextView) v.findViewById(R.id.content);
             image = (ImageView) v.findViewById(R.id.image);
-            likeCount = (TextView) v.findViewById(R.id.likeCount);
         }
     }
 
@@ -46,9 +48,8 @@ public class RecommendListActivityAdapter extends RecyclerView.Adapter<Recommend
     @Override
     public void onBindViewHolder(RecommendListActivityAdapter.MyViewHolder holder, int position) {
 
-        holder.place.setText(dataList.get(position).getPlace());
-        holder.image.setImageBitmap(dataList.get(position).getBitmap());
-        holder.likeCount.setText(dataList.get(position).getLikeCount());
+        holder.content.setText(dataList.get(position).getContent());
+        holder.image.setImageBitmap(StringToBitMap(dataList.get(position).getImage()));
 
 
     }
@@ -57,5 +58,18 @@ public class RecommendListActivityAdapter extends RecyclerView.Adapter<Recommend
     public int getItemCount() {
         return dataList == null ? 0 : dataList.size();
         //dataList.size()
+    }
+
+    public Bitmap StringToBitMap(String encodedString) {
+
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+
     }
 }

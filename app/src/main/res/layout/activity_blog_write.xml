@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BlogWriteActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/logo"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_above="@+id/addBlog"
+        android:layout_below="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_line_design"
+        android:layout_margin="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="제목"
+                android:textColorHint="#000000"/>
+
+            <EditText
+                android:id="@+id/hashTag"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="본문에 #을 이용해 태그를 입력해보세요!"
+                android:layout_marginTop="20dp" />
+
+            <EditText
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="글을 작성해주세요"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코스추가"
+                android:textColor="#000000"
+                android:fontFamily="@font/gmm"
+                android:layout_marginTop="20dp"
+                android:textSize="17dp"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_design">
+
+                    <RelativeLayout
+                        android:padding="1dp"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="0dp">
+
+                            <ImageView
+                                android:id="@+id/courseImage"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:scaleType="fitXY"
+                                />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="클릭하여 이미지를 추가해 주세요"
+                            android:layout_centerInParent="true"
+                            android:padding="3dp"
+                            android:textSize="12dp"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/courseContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="15dp"
+                    android:hint="코스에 대한 간단한 설명을 작성해 주세요"
+                    android:layout_marginTop="2dp"/>
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/addCourse"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/shape_button_design"
+                android:textColor="#ffffff"
+                android:text="추가하기"
+                android:textSize="18dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/gmm"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코스목록 -> 밀어서 확인"
+                android:textColor="#000000"
+                android:fontFamily="@font/gmm"
+                android:layout_marginTop="20dp"
+                android:textSize="17dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/blogWriteActivityRecyclerView"
+                android:layout_marginBottom="10dp"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/addBlog"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/login_button_design"
+        android:textColor="#ffffff"
+        android:text="작성하기"
+        android:textSize="18dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/gmb"/>
+
+
+</RelativeLayout>

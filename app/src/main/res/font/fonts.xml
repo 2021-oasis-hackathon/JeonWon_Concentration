@@ -14,4 +14,19 @@
         android:fontStyle="normal"
         android:fontWeight="900"
         android:font="@font/bmf2"/>
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="900"
+        android:font="@font/gmn"/>
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="900"
+        android:font="@font/gmm"/>
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="900"
+        android:font="@font/gmb"/>
 </font-family>

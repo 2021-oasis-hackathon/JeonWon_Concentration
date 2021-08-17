@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -54,7 +55,6 @@
 
             <ImageView
                 android:layout_weight="1"
-                android:id="@+id/jbMap"
                 android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -64,10 +64,53 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/logo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp">
 
 
+            <ImageView
+                android:id="@+id/jbMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/jb"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginRight="50dp"
+                />
+
+            <Button
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/gMap"
+                android:layout_marginLeft="155dp"
+                android:layout_marginTop="260dp"/>
+
+            <ImageView
+                android:id="@+id/jnMap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/jn"
+                android:layout_marginTop="220dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="40dp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+    
 
     <Button
         android:layout_width="wrap_content"
@@ -80,5 +123,7 @@
         android:textSize="20dp"
         android:fontFamily="@font/bmf"
         android:textColor="#00F7FF"/>
+=======
+>>>>>>> 5fb1ab39b940da67779f9a9f0e55a514381f1a8e
 
 </LinearLayout>
