@@ -62,7 +62,6 @@ public class DetailLocationActivity extends AppCompatActivity {
         getTitle = intent.getStringExtra("location");
 
         title = (TextView) findViewById(R.id.title);
-        Log.d(TAG, getTitle);
         title.setText(getTitle);
 
         progress = (ProgressBar) findViewById(R.id.progress);
@@ -219,7 +218,7 @@ public class DetailLocationActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        myRefBlog.child("전주시").child("blog").addValueEventListener(new ValueEventListener() {
+        myRefBlog.child(getTitle).child("blog").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 blogMainList.clear();

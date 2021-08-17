@@ -63,12 +63,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="7dp">
 
             <ImageView
                 android:layout_gravity="center_vertical"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
                 android:src="@drawable/pin"/>
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/location"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:fontFamily="@font/gmm"
                 android:text="ㅎㅇ"/>
         </LinearLayout>
@@ -86,12 +86,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:layout_gravity="center_vertical"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
                 android:src="@drawable/clock"/>
 
             <TextView
@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/time"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:fontFamily="@font/gmm"
                 android:text="ㅎㅇ"/>
         </LinearLayout>

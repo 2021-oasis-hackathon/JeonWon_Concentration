@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,11 +42,14 @@ public class BlogListActivity extends Fragment {
     BlogListActivityAdapter blogListActivityAdapter;
     RecyclerView.LayoutManager layoutManager;
 
+    public String selectLocation = HomeActivity.location();
 
     private List<BlogMain> blogMainList = new ArrayList<>();
 
     private ImageView pen;
     private RelativeLayout writeBlog;
+
+    private TextView title;
 
     private ProgressBar progress;
 
@@ -64,10 +68,19 @@ public class BlogListActivity extends Fragment {
         writeBlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), BlogSelectedLocationActivity.class);
+                startActivity(intent);
+
+                /*
                 Intent intent = new Intent(getActivity(), BlogWriteActivity.class);
                 startActivity(intent);
+                */
             }
         });
+
+        title = (TextView) v.findViewById(R.id.title);
+        title.setText(HomeActivity.selectLocation + " RLOG");
+        Log.d(TAG, selectLocation + "!@!@!@");
 
         progress = (ProgressBar) v.findViewById(R.id.progress);
 
@@ -101,12 +114,24 @@ public class BlogListActivity extends Fragment {
     public void onStart() {
         super.onStart();
 
+        if (HomeActivity.selectLocation.equals("전라북도")) {
+            for(int i = 0; i < HomeActivity.jbLocation.size(); i++) {
+                Log.d(TAG, HomeActivity.jbLocation.get(i));
+            }
+        } else if (HomeActivity.selectLocation.equals("전라남도")) {
+            for(int i = 0; i < HomeActivity.jnLocation.size(); i++) {
+                Log.d(TAG, HomeActivity.jnLocation.get(i));
+            }
+        } else {
+            Log.d(TAG, "광주");
+        }
         myRefBlog.child("전주시").child("blog").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 blogMainList.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     BlogMain blogMain = snapshot1.getValue(BlogMain.class);
+
                     blogMainList.add(blogMain);
                     blogListActivityAdapter.notifyDataSetChanged();
 
