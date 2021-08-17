@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/logo"/>
 
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="아이디가 없으신가요? 회원가입!"
-            android:textColor="#ACAAAA"
+            android:textColor="#505050"
             android:background="@null"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/gmn"/>
