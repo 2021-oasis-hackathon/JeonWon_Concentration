@@ -116,4 +116,52 @@
             android:layout_centerInParent="true"/>
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/filterView"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp">
+
+        <Button
+            android:id="@+id/like"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_outline_button_design"
+            android:textColor="#42C458"
+            android:text="좋아요순"
+            android:textSize="13dp"
+            android:fontFamily="@font/gmm"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_outline_button_design"
+            android:textColor="#42C458"
+            android:text="날짜순"
+            android:textSize="13dp"
+            android:fontFamily="@font/gmm"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/filterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_outline_button_design"
+            android:textColor="#42C458"
+            android:text="제목순"
+            android:textSize="13dp"
+            android:fontFamily="@font/gmm"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+    </LinearLayout>
+
 </RelativeLayout>

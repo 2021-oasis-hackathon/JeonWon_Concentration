@@ -63,6 +63,13 @@ public class BlogListDetailActivity extends AppCompatActivity {
         like.setEnabled(true);
         like.setClickable(true);
 
+        title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         recyclerView = (RecyclerView) findViewById(R.id.blogListDetailActivityRecyclerView);
         recyclerView.setHasFixedSize(true);

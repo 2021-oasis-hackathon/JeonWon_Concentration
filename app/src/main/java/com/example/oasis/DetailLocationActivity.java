@@ -3,7 +3,9 @@ package com.example.oasis;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -25,6 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DetailLocationActivity extends AppCompatActivity {
 
@@ -36,6 +40,11 @@ public class DetailLocationActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DetailLocationActivityAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    private RecyclerView recyclerView2;
+    private RecommendListBannerAdapter mAdapter2;
+    LinearLayoutManager layoutManager2;
+    private List<String> bannerList = new ArrayList<>();
 
     public List<BlogMain> blogMainList = new ArrayList<>();
     private List<BlogMain> filterList = new ArrayList<>();
@@ -52,6 +61,10 @@ public class DetailLocationActivity extends AppCompatActivity {
     public static String setTitle, setLocation, setTime, setImage;
 
     private ProgressBar progress;
+
+    Timer timer;
+    TimerTask timerTask;
+    int position;
 
 
 
@@ -286,6 +299,85 @@ public class DetailLocationActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(mAdapter);
 
+        for(int i = 0; i < 10; i++) {
+            bannerList.add("BANNER" + (i + 1));
+        }
+
+        //배너
+
+        recyclerView2 = (RecyclerView) findViewById(R.id.recommendBannerRecyclerView);
+        recyclerView2.setHasFixedSize(true);
+        layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView2.setLayoutManager(layoutManager2);
+
+        mAdapter2 = new RecommendListBannerAdapter(bannerList);
+        recyclerView2.setAdapter(mAdapter2);
+
+        if(bannerList != null) {
+            position = Integer.MAX_VALUE / 2;
+            recyclerView2.scrollToPosition(position);
+        }
+
+        SnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView2);
+        recyclerView2.smoothScrollBy(5,0);
+
+        recyclerView2.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == 1) {
+                    stopAutoAScrollBanner();
+                } else if (newState == 0) {
+                    position = layoutManager2.findFirstCompletelyVisibleItemPosition();
+                    runAutoScrollBanner();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        runAutoScrollBanner();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        stopAutoAScrollBanner();
+    }
+
+
+    private void stopAutoAScrollBanner() {
+        if (timer != null && timerTask != null) {
+            timerTask.cancel();
+            timer.cancel();
+            timer = null;
+            timerTask = null;
+            position = layoutManager2.findFirstCompletelyVisibleItemPosition();
+        }
+    }
+
+    private void runAutoScrollBanner() {
+        if(timer == null && timerTask == null) {
+            timer = new Timer();
+            timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    if (position == Integer.MAX_VALUE) {
+                        position = Integer.MAX_VALUE / 2;
+                        recyclerView2.scrollToPosition(position);
+                        recyclerView2.smoothScrollBy(5, 0);
+                    } else {
+                        position++;
+                        recyclerView2.smoothScrollToPosition(position);
+                    }
+                }
+            };
+            timer.schedule(timerTask, 1000, 1000);
+        }
+
     }
 
     public void initTagBackground() {
@@ -302,7 +394,6 @@ public class DetailLocationActivity extends AppCompatActivity {
         hashTagOutsideText.setTextColor(Color.parseColor("#ACA8A8"));
 
     }
-
 
     @Override
     public void onStart() {

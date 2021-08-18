@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,6 +28,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class BlogListActivity extends Fragment {
@@ -53,6 +56,9 @@ public class BlogListActivity extends Fragment {
 
     private ProgressBar progress;
 
+    private LinearLayout filterView;
+    private Button like, date, filterTitle;
+
   
     public BlogListActivity() {}
 
@@ -77,13 +83,89 @@ public class BlogListActivity extends Fragment {
             }
         });
 
+        filterView = (LinearLayout) v.findViewById(R.id.filterView);
+
+        like = (Button) v.findViewById(R.id.like);
+        date = (Button) v.findViewById(R.id.date);
+        filterTitle = (Button) v.findViewById(R.id.filterTitle);
+
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterView.setVisibility(View.GONE);
+                Collections.sort(blogMainList, new NoDescCompare());
+                blogListActivityAdapter = new BlogListActivityAdapter(blogMainList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if(obj != null){
+                            final int position = (int) obj;
+                            Intent intent = new Intent(getActivity(), BlogListDetailActivity.class);
+                            intent.putExtra("key", blogMainList.get(position).getKey());
+                            intent.putExtra("childKey", blogMainList.get(position).getChildKey());
+                            intent.putExtra("likeKey", blogMainList.get(position).getLikeKey());
+                            startActivity(intent);
+                        }
+                    }
+                });
+                recyclerView.setAdapter(blogListActivityAdapter);
+            }
+        });
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterView.setVisibility(View.GONE);
+                Collections.sort(blogMainList, new DateAscCompare());
+                blogListActivityAdapter = new BlogListActivityAdapter(blogMainList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if(obj != null){
+                            final int position = (int) obj;
+                            Intent intent = new Intent(getActivity(), BlogListDetailActivity.class);
+                            intent.putExtra("key", blogMainList.get(position).getKey());
+                            intent.putExtra("childKey", blogMainList.get(position).getChildKey());
+                            intent.putExtra("likeKey", blogMainList.get(position).getLikeKey());
+                            startActivity(intent);
+                        }
+                    }
+                });
+                recyclerView.setAdapter(blogListActivityAdapter);
+            }
+        });
+
+        filterTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterView.setVisibility(View.GONE);
+                Collections.sort(blogMainList, new NameAscCompare());
+                blogListActivityAdapter = new BlogListActivityAdapter(blogMainList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if(obj != null){
+                            final int position = (int) obj;
+                            Intent intent = new Intent(getActivity(), BlogListDetailActivity.class);
+                            intent.putExtra("key", blogMainList.get(position).getKey());
+                            intent.putExtra("childKey", blogMainList.get(position).getChildKey());
+                            intent.putExtra("likeKey", blogMainList.get(position).getLikeKey());
+                            startActivity(intent);
+                        }
+                    }
+                });
+                recyclerView.setAdapter(blogListActivityAdapter);
+            }
+        });
+
+
         filterImage = (ImageView) v.findViewById(R.id.filterImage);
         filterImage.setColorFilter(Color.parseColor("#ffffff"));
         filter = (RelativeLayout) v.findViewById(R.id.filter);
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "filter", Toast.LENGTH_SHORT).show();
+                filterView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -164,6 +246,56 @@ public class BlogListActivity extends Fragment {
 
             }
         });
+    }
+    // 날짜 오름차순
+
+    static class DateAscCompare implements Comparator<BlogMain> {
+        @Override
+        public int compare(BlogMain arg0, BlogMain arg1) {
+            return arg0.getDate().compareTo(arg1.getDate());
+        }
+
+    }
+
+    // 이름 오름차순
+
+    static class NameAscCompare implements Comparator<BlogMain> {
+        @Override
+        public int compare(BlogMain arg0, BlogMain arg1) {
+            return arg0.getTitle().compareTo(arg1.getTitle());
+        }
+
+    }
+
+    // 이름 내림차순
+    static class NameDescCompare implements Comparator<BlogMain> {
+        @Override
+        public int compare(BlogMain arg0, BlogMain arg1) {
+            return arg1.getTitle().compareTo(arg0.getTitle());
+        }
+    }
+
+
+
+    // No 오름차순
+
+    static class NoAscCompare implements Comparator<BlogMain> {
+        @Override
+        public int compare(BlogMain arg0, BlogMain arg1) {
+            int i  = Integer.parseInt(arg0.getLike());
+            return Integer.parseInt(arg0.getLike()) < Integer.parseInt(arg1.getLike()) ? -1 : Integer.parseInt(arg0.getLike()) > Integer.parseInt(arg1.getLike()) ? 1:0;
+        }
+    }
+
+
+
+    // No 내림차순
+
+    static class NoDescCompare implements Comparator<BlogMain> {
+        @Override
+        public int compare(BlogMain arg0, BlogMain arg1) {
+            return Integer.parseInt(arg0.getLike()) > Integer.parseInt(arg1.getLike()) ? -1 : Integer.parseInt(arg0.getLike()) < Integer.parseInt(arg1.getLike()) ? 1:0;
+        }
     }
 
     /*
