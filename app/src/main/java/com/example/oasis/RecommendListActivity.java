@@ -86,14 +86,6 @@ public class RecommendListActivity extends Fragment {
         }
 
 
-
-
-<<<<<<< HEAD
-=======
-        int randomNum = (int) (Math.random() * 13);
-        randomLocation = locationList[randomNum];
-        Log.d(TAG, "");
->>>>>>> 9744137843350af1bc19e86c563d86c604149db2
         location.setText(randomLocation);
 
 
@@ -298,7 +290,15 @@ public class RecommendListActivity extends Fragment {
         String temp = Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        i = 0;
+    }
 }
+
+
 
 //title, content, image, time, location
 
