@@ -75,7 +75,7 @@ public class RecommendListActivity extends Fragment {
         title = (TextView) v.findViewById(R.id.title);
 
 
-        int randomNum = (int) (Math.random() * 13) + 1;
+        int randomNum = (int) (Math.random() * 13);
         randomLocation = locationList[randomNum];
         Log.d(TAG, "");
         location.setText(randomLocation);
