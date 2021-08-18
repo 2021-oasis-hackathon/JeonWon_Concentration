@@ -23,13 +23,26 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_below="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="#42C458"
+        android:fontFamily="@font/bmf"
+        android:textSize="13dp" />
+
     <ScrollView
         android:layout_above="@+id/addBlog"
-        android:layout_below="@+id/top"
+        android:layout_below="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/border_line_design"
-        android:layout_margin="15dp">
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -130,7 +143,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="110dp"
                     android:id="@+id/blogWriteActivityRecyclerView" />
 
                 <TextView
@@ -218,11 +231,11 @@
                     android:layout_centerHorizontal="true"
                     android:id="@+id/addCourse"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:background="@drawable/shape_button_design"
                     android:textColor="#ffffff"
                     android:text="코스추가"
-                    android:textSize="18dp"
+                    android:textSize="14dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/gmm"/>
 

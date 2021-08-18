@@ -109,7 +109,7 @@ public class RecommendListDetailActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-        myRefBlog.child("전주시").child("blog").addValueEventListener(new ValueEventListener() {
+        myRefBlog.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 blogMainList.clear();

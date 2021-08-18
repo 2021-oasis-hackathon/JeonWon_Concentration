@@ -24,16 +24,22 @@ import java.util.List;
 public class DetailLocationActivityAdapter extends RecyclerView.Adapter<DetailLocationActivityAdapter.MyViewHolder> {
 
     private List<BlogMain> dataList;
+    static public View.OnClickListener onClick;
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
+        View rootView;
         private TextView title, content, likeCount, hashTag;
         private ImageView image;
 
         public MyViewHolder(View v) {
             super(v);
 
+            rootView = v;
+            rootView.setEnabled(true);
+            rootView.setClickable(true);
+            rootView.setOnClickListener(onClick);
             title = (TextView) v.findViewById(R.id.title);
             content = (TextView) v.findViewById(R.id.content);
             likeCount = (TextView) v.findViewById(R.id.likeCount);
@@ -42,9 +48,10 @@ public class DetailLocationActivityAdapter extends RecyclerView.Adapter<DetailLo
         }
     }
 
-    public DetailLocationActivityAdapter(List<BlogMain> list) {
+    public DetailLocationActivityAdapter(List<BlogMain> list, View.OnClickListener onClickListener) {
 
         dataList = list;
+        onClick = onClickListener;
     }
 
     @Override
@@ -59,6 +66,7 @@ public class DetailLocationActivityAdapter extends RecyclerView.Adapter<DetailLo
 
     @Override
     public void onBindViewHolder(DetailLocationActivityAdapter.MyViewHolder holder, int position) {
+        holder.rootView.setTag(position);
         holder.hashTag.setText(dataList.get(position).getHashTag());
         holder.title.setText(dataList.get(position).getTitle());
         holder.content.setText(dataList.get(position).getContent());

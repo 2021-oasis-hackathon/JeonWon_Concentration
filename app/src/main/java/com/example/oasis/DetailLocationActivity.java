@@ -49,6 +49,8 @@ public class DetailLocationActivity extends AppCompatActivity {
     private RelativeLayout hashTagMap, hashTagFoodStore, hashTagHealing, hashTagOutside;
     private TextView hashTagMapText, hashTagFoodStoreText, hashTagHealingText, hashTagOutsideText;
 
+    public static String setTitle, setLocation, setTime, setImage;
+
     private ProgressBar progress;
 
 
@@ -62,7 +64,6 @@ public class DetailLocationActivity extends AppCompatActivity {
         getTitle = intent.getStringExtra("location");
 
         title = (TextView) findViewById(R.id.title);
-        Log.d(TAG, getTitle);
         title.setText(getTitle);
 
         progress = (ProgressBar) findViewById(R.id.progress);
@@ -97,8 +98,23 @@ public class DetailLocationActivity extends AppCompatActivity {
                     filterList.add(blog);
                 }
 
-                mAdapter = new DetailLocationActivityAdapter(filterList);
+                mAdapter = new DetailLocationActivityAdapter(filterList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if (obj != null) {
+                            final int position = (int) obj;
+                            Intent intent = new Intent(DetailLocationActivity.this, BlogListDetailActivity.class);
+                            intent.putExtra("key", filterList.get(position).getKey());
+                            intent.putExtra("childKey", filterList.get(position).getChildKey());
+                            intent.putExtra("likeKey", filterList.get(position).getLikeKey());
+                            startActivity(intent);
+                        }
+                    }
+                });
                 recyclerView.setAdapter(mAdapter);
+                //mAdapter = new DetailLocationActivityAdapter(filterList);
+                //recyclerView.setAdapter(mAdapter);
 
             }
         });
@@ -118,7 +134,20 @@ public class DetailLocationActivity extends AppCompatActivity {
                     }
                 }
 
-                mAdapter = new DetailLocationActivityAdapter(filterList);
+                mAdapter = new DetailLocationActivityAdapter(filterList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if (obj != null) {
+                            final int position = (int) obj;
+                            Intent intent = new Intent(DetailLocationActivity.this, BlogListDetailActivity.class);
+                            intent.putExtra("key", filterList.get(position).getKey());
+                            intent.putExtra("childKey", filterList.get(position).getChildKey());
+                            intent.putExtra("likeKey", filterList.get(position).getLikeKey());
+                            startActivity(intent);
+                        }
+                    }
+                });
                 recyclerView.setAdapter(mAdapter);
             }
         });
@@ -139,8 +168,23 @@ public class DetailLocationActivity extends AppCompatActivity {
                     }
                 }
 
-                mAdapter = new DetailLocationActivityAdapter(filterList);
+                mAdapter = new DetailLocationActivityAdapter(filterList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if (obj != null) {
+                            final int position = (int) obj;
+                            Intent intent = new Intent(DetailLocationActivity.this, BlogListDetailActivity.class);
+                            intent.putExtra("key", filterList.get(position).getKey());
+                            intent.putExtra("childKey", filterList.get(position).getChildKey());
+                            intent.putExtra("likeKey", filterList.get(position).getLikeKey());
+                            startActivity(intent);
+                        }
+                    }
+                });
                 recyclerView.setAdapter(mAdapter);
+                //mAdapter = new DetailLocationActivityAdapter(filterList);
+                //recyclerView.setAdapter(mAdapter);
             }
         });
 
@@ -159,8 +203,23 @@ public class DetailLocationActivity extends AppCompatActivity {
                     }
                 }
 
-                mAdapter = new DetailLocationActivityAdapter(filterList);
+                mAdapter = new DetailLocationActivityAdapter(filterList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if (obj != null) {
+                            final int position = (int) obj;
+                            Intent intent = new Intent(DetailLocationActivity.this, BlogListDetailActivity.class);
+                            intent.putExtra("key", filterList.get(position).getKey());
+                            intent.putExtra("childKey", filterList.get(position).getChildKey());
+                            intent.putExtra("likeKey", filterList.get(position).getLikeKey());
+                            startActivity(intent);
+                        }
+                    }
+                });
                 recyclerView.setAdapter(mAdapter);
+                //mAdapter = new DetailLocationActivityAdapter(filterList);
+                //recyclerView.setAdapter(mAdapter);
             }
         });
 
@@ -183,8 +242,23 @@ public class DetailLocationActivity extends AppCompatActivity {
                     }
                 }
 
-                mAdapter = new DetailLocationActivityAdapter(filterList);
+                mAdapter = new DetailLocationActivityAdapter(filterList, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Object obj = v.getTag();
+                        if (obj != null) {
+                            final int position = (int) obj;
+                            Intent intent = new Intent(DetailLocationActivity.this, BlogListDetailActivity.class);
+                            intent.putExtra("key", filterList.get(position).getKey());
+                            intent.putExtra("childKey", filterList.get(position).getChildKey());
+                            intent.putExtra("likeKey", filterList.get(position).getLikeKey());
+                            startActivity(intent);
+                        }
+                    }
+                });
                 recyclerView.setAdapter(mAdapter);
+                //mAdapter = new DetailLocationActivityAdapter(filterList);
+                //recyclerView.setAdapter(mAdapter);
                 searchEditText.setText("");
             }
         });
@@ -195,7 +269,21 @@ public class DetailLocationActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(DetailLocationActivity.this);
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new DetailLocationActivityAdapter(blogMainList);
+       // mAdapter = new DetailLocationActivityAdapter(blogMainList);
+        mAdapter = new DetailLocationActivityAdapter(blogMainList, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Object obj = v.getTag();
+                if (obj != null) {
+                    final int position = (int) obj;
+                    Intent intent = new Intent(DetailLocationActivity.this, BlogListDetailActivity.class);
+                    intent.putExtra("key", blogMainList.get(position).getKey());
+                    intent.putExtra("childKey", blogMainList.get(position).getChildKey());
+                    intent.putExtra("likeKey", blogMainList.get(position).getLikeKey());
+                    startActivity(intent);
+                }
+            }
+        });
         recyclerView.setAdapter(mAdapter);
 
     }
@@ -219,14 +307,20 @@ public class DetailLocationActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        myRefBlog.child("전주시").child("blog").addValueEventListener(new ValueEventListener() {
+        myRefBlog.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 blogMainList.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     BlogMain blogMain = snapshot1.getValue(BlogMain.class);
-                    blogMainList.add(blogMain);
-                    mAdapter.notifyDataSetChanged();
+                    String boolString = blogMain.getLocation2();
+                    if (HomeActivity.selectLocation.equals("광주")) {
+                        boolString = blogMain.getLocation1();
+                    }
+                    if (getTitle.equals(boolString)) {
+                        blogMainList.add(blogMain);
+                        mAdapter.notifyDataSetChanged();
+                    }
                 }
 
                 progress.setVisibility(View.GONE);

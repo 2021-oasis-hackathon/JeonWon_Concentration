@@ -61,7 +61,7 @@ public class BlogWriteActivity extends AppCompatActivity {
 
     private RelativeLayout tagLayout;
     private EditText title, hashTag, content, courseContent;
-    private TextView textView, textView2, tagContent;
+    private TextView textView, textView2, tagContent, titleText;
     private ImageView courseImage;
     private Button addCourse, addBlog;
 
@@ -91,6 +91,16 @@ public class BlogWriteActivity extends AppCompatActivity {
             }
         });
         recyclerView.setAdapter(mAdapter);
+
+        titleText = (TextView) findViewById(R.id.titleText);
+
+
+        if (HomeActivity.selectLocation.equals("광주")) {
+            titleText.setText(HomeActivity.selectLocation + " 블로그");
+        } else {
+            titleText.setText(HomeActivity.selectLocation + " " + BlogSelectedLocationActivity.setLocation + " 블로그");
+        }
+
 
         title = (EditText) findViewById(R.id.title);
         hashTag = (EditText) findViewById(R.id.hashTag);
@@ -170,6 +180,36 @@ public class BlogWriteActivity extends AppCompatActivity {
 
 
 
+                String key = myRefBlog.push().getKey();
+                Log.d(TAG, key);
+
+                String childKey = myRefBlog.child(key).push().getKey();
+                String likeKey = myRefBlog.child(key).push().getKey();
+
+                // titleText.setText(HomeActivity.selectLocation + " " + BlogSelectedLocationActivity.setLocation + " 블로그");
+
+                if (HomeActivity.selectLocation.equals("광주")) {
+                    myRefBlog.child(key).setValue(
+                            new BlogMain(
+                                    key, userProfile, strTitle, formatTime, strContent,
+                                    blogCourseList.get(0).getImage(), "0", nickName, childKey, likeKey, strHashTag,
+                                    HomeActivity.selectLocation, ""));
+                } else {
+                    myRefBlog.child(key).setValue(
+                            new BlogMain(
+                                    key, userProfile, strTitle, formatTime, strContent,
+                                    blogCourseList.get(0).getImage(), "0", nickName, childKey, likeKey, strHashTag,
+                                    HomeActivity.selectLocation, BlogSelectedLocationActivity.setLocation));
+                }
+
+                keys.add(key);
+                myRefBlog.child(key).child(childKey).setValue(blogCourseList);
+
+                SharedPreferences sf = getSharedPreferences("user", MODE_PRIVATE);
+                String nickName = sf.getString("nickName", "");
+                myRefBlog.child(key).child(likeKey).push().setValue(nickName);
+
+                /*
                 String key = myRefBlog.child("전주시").child("blog").push().getKey();
                 Log.d(TAG, key);
 
@@ -183,6 +223,8 @@ public class BlogWriteActivity extends AppCompatActivity {
                 SharedPreferences sf = getSharedPreferences("user", MODE_PRIVATE);
                 String nickName = sf.getString("nickName", "");
                 myRefBlog.child("전주시").child("blog").child(key).child(likeKey).push().setValue(nickName);
+
+                 */
 
                 title.setText("");
                 hashTag.setText("");

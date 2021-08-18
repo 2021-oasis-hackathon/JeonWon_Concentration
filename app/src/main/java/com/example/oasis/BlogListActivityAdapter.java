@@ -22,7 +22,7 @@ public class BlogListActivityAdapter extends RecyclerView.Adapter<BlogListActivi
 
         View rootView;
         private ImageView profileImage, image;
-        private TextView nickName, title, content, date;
+        private TextView nickName, title, content, date, location, likeCount;
         public MyViewHolder(View v) {
             super(v);
 
@@ -36,6 +36,8 @@ public class BlogListActivityAdapter extends RecyclerView.Adapter<BlogListActivi
             title = (TextView) v.findViewById(R.id.title);
             content = (TextView) v.findViewById(R.id.content);
             date = (TextView) v.findViewById(R.id.date);
+            location = (TextView) v.findViewById(R.id.location);
+            likeCount = (TextView) v.findViewById(R.id.likeCount);
 
         }
     }
@@ -69,6 +71,8 @@ public class BlogListActivityAdapter extends RecyclerView.Adapter<BlogListActivi
         holder.title.setText(dataList.get(position).getTitle());
         holder.content.setText(dataList.get(position).getContent());
         holder.date.setText(dataList.get(position).getDate());
+        holder.location.setText(dataList.get(position).getLocation1() + " " + dataList.get(position).getLocation2());
+        holder.likeCount.setText(dataList.get(position).getLike());
 
     }
 
