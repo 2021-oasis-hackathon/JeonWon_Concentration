@@ -1,6 +1,7 @@
 package com.example.oasis;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -74,6 +75,15 @@ public class BlogListActivity extends Fragment {
         writeBlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sf = getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE);
+
+                String userNickName = sf.getString("nickName", null);
+
+                if (userNickName == null) {
+                    Toast.makeText(getActivity(), "로그인이 필요한 기능입니다", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Intent intent = new Intent(getActivity(), BlogSelectedLocationActivity.class);
                 startActivity(intent);
                 /*
@@ -171,7 +181,6 @@ public class BlogListActivity extends Fragment {
 
         title = (TextView) v.findViewById(R.id.title);
         title.setText(HomeActivity.selectLocation + " RLOG");
-        Log.d(TAG, selectLocation + "!@!@!@");
 
         progress = (ProgressBar) v.findViewById(R.id.progress);
 
@@ -232,7 +241,6 @@ public class BlogListActivity extends Fragment {
 
                         blogMainList.add(blogMain);
                         blogListActivityAdapter.notifyDataSetChanged();
-                        Log.d(TAG, blogMain.getLocation2());
                     }
 
 
