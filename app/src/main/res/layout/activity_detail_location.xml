@@ -40,6 +40,11 @@
             android:textSize="30dp" />
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommendBannerRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
