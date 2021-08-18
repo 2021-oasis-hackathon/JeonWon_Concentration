@@ -3,11 +3,17 @@ package com.example.oasis;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -23,8 +29,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DetailLocationActivity extends AppCompatActivity {
 
@@ -36,6 +45,11 @@ public class DetailLocationActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DetailLocationActivityAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    private RecyclerView recyclerView2;
+    private RecommendListBannerAdapter mAdapter2;
+    LinearLayoutManager layoutManager2;
+    private List<String> bannerList = new ArrayList<>();
 
     public List<BlogMain> blogMainList = new ArrayList<>();
     private List<BlogMain> filterList = new ArrayList<>();
@@ -53,6 +67,10 @@ public class DetailLocationActivity extends AppCompatActivity {
 
     private ProgressBar progress;
 
+    Timer timer;
+    TimerTask timerTask;
+    int position;
+
 
 
     @Override
@@ -68,7 +86,7 @@ public class DetailLocationActivity extends AppCompatActivity {
 
         progress = (ProgressBar) findViewById(R.id.progress);
         search = (ImageView) findViewById(R.id.search);
-        search.setColorFilter(Color.parseColor("#42C458"));
+        search.setColorFilter(Color.parseColor("#9acd32"));
 
         searchEditText = (EditText) findViewById(R.id.searchEditText);
 
@@ -286,6 +304,97 @@ public class DetailLocationActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(mAdapter);
 
+
+
+        //배너
+
+        bannerList.add(BitmapToString(BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.banner1)));
+        bannerList.add(BitmapToString(BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.banner2)));
+        bannerList.add(BitmapToString(BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.banner3)));
+        bannerList.add(BitmapToString(BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.banner4)));
+
+        recyclerView2 = (RecyclerView) findViewById(R.id.recommendBannerRecyclerView);
+        recyclerView2.setHasFixedSize(true);
+        layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView2.setLayoutManager(layoutManager2);
+
+        mAdapter2 = new RecommendListBannerAdapter(bannerList);
+        recyclerView2.setAdapter(mAdapter2);
+
+        if(bannerList != null) {
+            position = Integer.MAX_VALUE / 2;
+            recyclerView2.scrollToPosition(position);
+        }
+
+        SnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView2);
+        recyclerView2.smoothScrollBy(5,0);
+
+        recyclerView2.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == 1) {
+                    stopAutoAScrollBanner();
+                } else if (newState == 0) {
+                    position = layoutManager2.findFirstCompletelyVisibleItemPosition();
+                    runAutoScrollBanner();
+                }
+            }
+        });
+    }
+
+    public String BitmapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[]  b = baos.toByteArray();
+        String temp = Base64.encodeToString(b, Base64.DEFAULT);
+        return temp;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        runAutoScrollBanner();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        stopAutoAScrollBanner();
+    }
+
+
+    private void stopAutoAScrollBanner() {
+        if (timer != null && timerTask != null) {
+            timerTask.cancel();
+            timer.cancel();
+            timer = null;
+            timerTask = null;
+            position = layoutManager2.findFirstCompletelyVisibleItemPosition();
+        }
+    }
+
+    private void runAutoScrollBanner() {
+        if(timer == null && timerTask == null) {
+            timer = new Timer();
+            timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    if (position == Integer.MAX_VALUE) {
+                        position = Integer.MAX_VALUE / 2;
+                        recyclerView2.scrollToPosition(position);
+                        recyclerView2.smoothScrollBy(5, 0);
+                    } else {
+                        position++;
+                        recyclerView2.smoothScrollToPosition(position);
+                    }
+                }
+            };
+            timer.schedule(timerTask, 3000, 3000);
+        }
+
     }
 
     public void initTagBackground() {
@@ -302,7 +411,6 @@ public class DetailLocationActivity extends AppCompatActivity {
         hashTagOutsideText.setTextColor(Color.parseColor("#ACA8A8"));
 
     }
-
 
     @Override
     public void onStart() {

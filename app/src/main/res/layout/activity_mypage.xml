@@ -106,7 +106,7 @@
         android:textSize="25dp"
         android:layout_marginLeft="15dp"
         android:fontFamily="@font/gmm"
-        android:textColor="#42C458"
+        android:textColor="#9acd32"
         android:layout_centerVertical="true"/>
 
     <RelativeLayout

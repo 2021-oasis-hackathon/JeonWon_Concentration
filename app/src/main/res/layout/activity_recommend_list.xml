@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/logo2"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             />
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="전주시"
-                android:textColor="#42C458"
+                android:textColor="#9acd32"
                 android:fontFamily="@font/gmb"
                 android:textSize="25dp" />
 
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:text="카페"
             android:fontFamily="@font/gmm"
-            android:textColor="#42C458"
+            android:textColor="#9acd32"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="17dp"
             android:layout_marginBottom="17dp"

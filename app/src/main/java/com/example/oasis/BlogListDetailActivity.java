@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -63,6 +64,13 @@ public class BlogListDetailActivity extends AppCompatActivity {
         like.setEnabled(true);
         like.setClickable(true);
 
+        title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         recyclerView = (RecyclerView) findViewById(R.id.blogListDetailActivityRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -75,6 +83,12 @@ public class BlogListDetailActivity extends AppCompatActivity {
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (userNickName == null) {
+                    Toast.makeText(BlogListDetailActivity.this, "로그인이 필요한 기능입니다", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "로그인이 필요한 기능입니다");
+                    return;
+                }
 
                 if (userNickName.equals(nickName)) {
                     return;
@@ -169,15 +183,17 @@ public class BlogListDetailActivity extends AppCompatActivity {
                 likeUserList.clear();
                 System.out.println(snapshot.getChildrenCount());
                 for(DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    Log.d(TAG, "one");
                     String likeUser = snapshot1.getValue(String.class);
                     likeUserList.add(likeUser);
 
-                    if (userNickName.equals(likeUser)) {
-                        like.setImageResource(R.drawable.like);
-                        likeKey2 = snapshot1.getKey();
-                        Log.d(TAG, snapshot1.getKey());
+
+                    if (userNickName != null) {
+                        if (userNickName.equals(likeUser)) {
+                            like.setImageResource(R.drawable.like);
+                            likeKey2 = snapshot1.getKey();
+                        }
                     }
+
                 }
                 myRefBlog.child(key).child("like").setValue(String.valueOf(likeUserList.size() - 1));
                 likeCount.setText(String.valueOf(likeUserList.size() - 1));

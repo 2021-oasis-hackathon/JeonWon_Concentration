@@ -10,14 +10,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/logo"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gmm"
+                android:text="ㅎㅇ"
+                android:textColor="#9acd32"
+                android:textSize="30dp" />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
@@ -25,25 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/top"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
 
-            <TextView
-                android:layout_centerVertical="true"
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#42C458"
-                android:fontFamily="@font/gmb"
-                android:textSize="30dp"
-                android:text="ㅎㅇ"
-                />
-
-        </RelativeLayout>
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -77,15 +71,15 @@
 
         <RelativeLayout
             android:id="@+id/filter"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:background="@drawable/shape_button"/>
 
 
         <ImageView
             android:id="@+id/filterImage"
-            android:layout_width="27dp"
-            android:layout_height="27dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/filter"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
@@ -98,22 +92,70 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginRight="30dp">
 
         <RelativeLayout
             android:id="@+id/writeBlog"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:background="@drawable/shape_button"/>
 
 
         <ImageView
             android:id="@+id/pen"
-            android:layout_width="27dp"
-            android:layout_height="27dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/pencil"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/filterView"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp">
+
+        <Button
+            android:id="@+id/like"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_outline_button_design"
+            android:textColor="#9acd32"
+            android:text="좋아요순"
+            android:textSize="13dp"
+            android:fontFamily="@font/gmm"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_outline_button_design"
+            android:textColor="#9acd32"
+            android:text="날짜순"
+            android:textSize="13dp"
+            android:fontFamily="@font/gmm"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/filterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_outline_button_design"
+            android:textColor="#9acd32"
+            android:text="제목순"
+            android:textSize="13dp"
+            android:fontFamily="@font/gmm"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

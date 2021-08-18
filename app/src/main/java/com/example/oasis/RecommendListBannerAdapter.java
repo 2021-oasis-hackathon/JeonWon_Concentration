@@ -1,5 +1,8 @@
 package com.example.oasis;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +20,12 @@ public class RecommendListBannerAdapter extends RecyclerView.Adapter<RecommendLi
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView banner;
+        private ImageView banner;
 
         public MyViewHolder(View v) {
             super(v);
 
-            banner = (TextView) v.findViewById(R.id.banner);
+            banner = (ImageView) v.findViewById(R.id.banner);
         }
     }
 
@@ -43,10 +46,23 @@ public class RecommendListBannerAdapter extends RecyclerView.Adapter<RecommendLi
     @Override
     public void onBindViewHolder(RecommendListBannerAdapter.MyViewHolder holder, int position) {
 
-        holder.banner.setText(dataList.get(position % dataList.size()));
+        holder.banner.setImageBitmap(StringToBitMap(dataList.get(position % dataList.size())));
 
 
     }
+
+    public Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+
+    }
+
 
     @Override
     public int getItemCount() {

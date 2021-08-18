@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/logo2"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             />
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="전주시 RLOG"
-            android:textColor="#42C458"
+            android:textColor="#9acd32"
             android:fontFamily="@font/gmm"
             android:textSize="25dp" />
 
@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="관련 블로그"
-            android:textColor="#42C458"
+            android:textColor="#9acd32"
             android:fontFamily="@font/gmm"
             android:textSize="22dp" />
 

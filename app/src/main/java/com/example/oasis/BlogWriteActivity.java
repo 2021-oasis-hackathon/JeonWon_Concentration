@@ -167,7 +167,7 @@ public class BlogWriteActivity extends AppCompatActivity {
                 String strHashTag = hashTag.getText().toString();
                 String strContent = content.getText().toString();
 
-                if (strTitle.getBytes().length <= 0 || strContent.getBytes().length <= 0 || strHashTag.getBytes().length <=0) {
+                if (strTitle.getBytes().length <= 0 || strContent.getBytes().length <= 0 || strHashTag.getBytes().length <=0 || blogCourseList.size() <= 0) {
                     Toast.makeText(BlogWriteActivity.this, "입력사항을 확인해 주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -181,12 +181,9 @@ public class BlogWriteActivity extends AppCompatActivity {
 
 
                 String key = myRefBlog.push().getKey();
-                Log.d(TAG, key);
 
                 String childKey = myRefBlog.child(key).push().getKey();
                 String likeKey = myRefBlog.child(key).push().getKey();
-
-                // titleText.setText(HomeActivity.selectLocation + " " + BlogSelectedLocationActivity.setLocation + " 블로그");
 
                 if (HomeActivity.selectLocation.equals("광주")) {
                     myRefBlog.child(key).setValue(
@@ -209,21 +206,34 @@ public class BlogWriteActivity extends AppCompatActivity {
                 String nickName = sf.getString("nickName", "");
                 myRefBlog.child(key).child(likeKey).push().setValue(nickName);
 
+
+
                 /*
-                String key = myRefBlog.child("전주시").child("blog").push().getKey();
-                Log.d(TAG, key);
+                                String key = myRefBlog.push().getKey();
 
-                String childKey = myRefBlog.child("전주시").child("blog").child(key).push().getKey();
-                String likeKey = myRefBlog.child("전주시").child("blog").child(key).push().getKey();
+                String childKey = myRefBlog.child(key).push().getKey();
+                String likeKey = myRefBlog.child(key).push().getKey();
 
-                myRefBlog.child("전주시").child("blog").child(key).setValue(new BlogMain(key, userProfile, strTitle, formatTime, strContent, blogCourseList.get(0).getImage(), "0", nickName, childKey, likeKey, strHashTag));
+                if (HomeActivity.selectLocation.equals("광주")) {
+                    myRefBlog.child(key).setValue(
+                            new BlogMain(
+                                    key, userProfile, strTitle, formatTime, strContent,
+                                    blogCourseList.get(0).getImage(), "0", nickName, childKey, likeKey, strHashTag,
+                                    HomeActivity.selectLocation, ""));
+                } else {
+                    myRefBlog.child(key).setValue(
+                            new BlogMain(
+                                    key, userProfile, strTitle, formatTime, strContent,
+                                    blogCourseList.get(0).getImage(), "0", nickName, childKey, likeKey, strHashTag,
+                                    HomeActivity.selectLocation, BlogSelectedLocationActivity.setLocation));
+                }
+
                 keys.add(key);
-                myRefBlog.child("전주시").child("blog").child(key).child(childKey).setValue(blogCourseList);
+                myRefBlog.child(key).child(childKey).setValue(blogCourseList);
 
                 SharedPreferences sf = getSharedPreferences("user", MODE_PRIVATE);
                 String nickName = sf.getString("nickName", "");
-                myRefBlog.child("전주시").child("blog").child(key).child(likeKey).push().setValue(nickName);
-
+                myRefBlog.child(key).child(likeKey).push().setValue(nickName);
                  */
 
                 title.setText("");
@@ -246,6 +256,7 @@ public class BlogWriteActivity extends AppCompatActivity {
         SharedPreferences sf = getSharedPreferences("user",MODE_PRIVATE);
         nickName = sf.getString("nickName","");
         userProfile = sf.getString("profile", null);
+        Log.d(TAG, userProfile);
     }
 
     @Override
@@ -256,6 +267,7 @@ public class BlogWriteActivity extends AppCompatActivity {
             try {
                 textView.setText("");
                 image = getImage(data.getData());
+                Log.d(TAG, String.valueOf(image));
                 courseImage.setImageBitmap(image);
 
             } catch (Exception e) {

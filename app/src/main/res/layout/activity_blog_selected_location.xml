@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:layout_centerHorizontal="true"
-            android:textColor="#42C458"
+            android:textColor="#9acd32"
             android:fontFamily="@font/bmf"
             android:textSize="13dp"
             android:layout_marginTop="30dp"/>

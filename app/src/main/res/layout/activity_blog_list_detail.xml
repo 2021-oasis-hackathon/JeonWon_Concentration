@@ -7,32 +7,19 @@
     tools:context=".BlogListDetailActivity"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/logo"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            />
-
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:orientation="horizontal">
 
             <TextView
@@ -41,18 +28,9 @@
                 android:layout_height="wrap_content"
                 android:text="제목"
                 android:textColor="#000000"
-                android:fontFamily="@font/gmb"
-                android:textSize="25dp"/>
-
-            <TextView
-                android:id="@+id/location"
-                android:layout_marginLeft="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="제목"
-                android:textColor="#42C458"
                 android:fontFamily="@font/gmm"
-                android:textSize="18dp"/>
+                android:textSize="20dp"/>
+
 
         </LinearLayout>
 
@@ -61,9 +39,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="5dp">
 
             <RelativeLayout
+                android:id="@+id/a"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
                 android:background="@drawable/edittext_design">
@@ -77,9 +56,20 @@
                     android:layout_height="wrap_content"
                     android:text="제목"
                     android:fontFamily="@font/gmm"
-                    android:textSize="18dp"/>
+                    android:textSize="14dp"/>
             </RelativeLayout>
 
+            <TextView
+                android:layout_toRightOf="@+id/a"
+                android:id="@+id/location"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제목"
+                android:textColor="#9acd32"
+                android:fontFamily="@font/gmm"
+                android:textSize="14dp"/>
 
 
         </RelativeLayout>
@@ -89,7 +79,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="300dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="5dp">
 
             <androidx.recyclerview.widget.RecyclerView
 
@@ -108,8 +98,8 @@
 
             <ImageView
                 android:id="@+id/like"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/nolike"/>
 
             <TextView
@@ -120,7 +110,7 @@
                 android:layout_marginLeft="5dp"
                 android:textColor="#000000"
                 android:fontFamily="@font/gmn"
-                android:textSize="20dp"/>
+                android:textSize="18dp"/>
 
         </LinearLayout>
 
@@ -131,15 +121,23 @@
             android:layout_marginTop="5dp"/>
 
 
-        <TextView
-            android:id="@+id/content"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/gmm"
-            android:text="제목"
-            android:textColor="#000000"
-            android:textSize="22dp" />
+            >
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gmm"
+                android:text="제목"
+                android:textColor="#000000"
+                android:paddingBottom="50dp"
+                android:lineSpacingExtra="10dp"
+                android:textSize="16dp" />
+        </ScrollView>
+
 
     </LinearLayout>
 

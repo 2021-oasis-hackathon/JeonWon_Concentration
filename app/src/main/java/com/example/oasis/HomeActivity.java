@@ -1,6 +1,8 @@
 package com.example.oasis;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
@@ -24,6 +28,8 @@ import java.util.ArrayList;
 public class HomeActivity extends Fragment {
 
     private static final String TAG = "HomeActivity";
+
+    int REQUEST_EXTERNAL_STORAGE_PERMISSON = 1002;
 
     private View v;
 
@@ -117,6 +123,14 @@ public class HomeActivity extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { }
         });
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_EXTERNAL_STORAGE_PERMISSON);
+            }
+        }
 
         gwangju.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,6 +252,11 @@ public class HomeActivity extends Fragment {
 
 
         return v;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     public static String location () {
