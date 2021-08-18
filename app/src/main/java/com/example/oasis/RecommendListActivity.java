@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
@@ -32,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RecommendListActivity extends Fragment {
 
@@ -48,23 +52,34 @@ public class RecommendListActivity extends Fragment {
 
     private ProgressBar progress;
 
-    private TextView title;
+    private TextView title, location, nullData;
     private TextView cafe, festival, foodStore;
 
     public static String setTitle, setLocation, setTime, setImage;
 
+    String[] locationList = {"전주시", "정읍시", "군산시", "부안시", "고창시", "임실시", "광주", "여수시", "순천시", "완도시", "목포시", "보성시", "해남시" };
+    String randomLocation;
 
     private View v;
     public RecommendListActivity() {}
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         v = inflater.inflate(R.layout.activity_recommend_list, container, false);
 
+        nullData = (TextView) v.findViewById(R.id.nullData);
+        location = (TextView) v.findViewById(R.id.location);
         title = (TextView) v.findViewById(R.id.title);
-        title.setText("카페");
+
+
+        int randomNum = (int) (Math.random() * 13) + 1;
+        randomLocation = locationList[randomNum];
+        Log.d(TAG, "");
+        location.setText(randomLocation);
+
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recommendListActivityRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -190,34 +205,46 @@ public class RecommendListActivity extends Fragment {
                 recommendList.clear();
                 for(DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Recommend recommend = snapshot1.getValue(Recommend.class);
-                    recommendList.add(recommend);
-                }
-                //mAdapter.notifyDataSetChanged();
-
-
-                filterList.clear();
-                for (Recommend recommend : recommendList) {
-                    if(recommend.getTitle().equals("카페")) {
-                        filterList.add(recommend);
+                    if (recommend.getLocation2().equals(randomLocation)) {
+                        recommendList.add(recommend);
                     }
+
                 }
 
-                mAdapter = new RecommendListActivityAdapter(filterList , new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Object obj = v.getTag();
-                        if (obj != null) {
-                            final int position = (int) obj;
-                            setTitle = filterList.get(position).getContent();
-                            setLocation = filterList.get(position).getLocation();
-                            setTime = filterList.get(position).getTime();
-                            setImage = filterList.get(position).getImage();
-                            Intent intent = new Intent(getActivity(), RecommendListDetailActivity.class);
-                            startActivity(intent);
+                if (recommendList.size() == 0) {
+                    nullData.setVisibility(View.VISIBLE);
+                    title.setText("");
+                    cafe.setTextColor(Color.parseColor("#000000"));
+                } else {
+                    title.setText("카페");
+                    cafe.setTextColor(Color.parseColor("#9acd32"));
+                    filterList.clear();
+                    for (Recommend recommend : recommendList) {
+                        if(recommend.getTitle().equals("카페")) {
+                            filterList.add(recommend);
                         }
                     }
-                });
-                recyclerView.setAdapter(mAdapter);
+
+                    mAdapter = new RecommendListActivityAdapter(filterList , new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Object obj = v.getTag();
+                            if (obj != null) {
+                                final int position = (int) obj;
+                                setTitle = filterList.get(position).getContent();
+                                setLocation = filterList.get(position).getLocation();
+                                setTime = filterList.get(position).getTime();
+                                setImage = filterList.get(position).getImage();
+                                Intent intent = new Intent(getActivity(), RecommendListDetailActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+                    });
+                    recyclerView.setAdapter(mAdapter);
+                }
+
+
+
                 progress.setVisibility(View.GONE);
 
             }

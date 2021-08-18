@@ -6,28 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/logo2"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            />
-
-
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp">
 
         <LinearLayout
@@ -40,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="오늘의 추천 지역은?  "
                 android:textColor="#000000"
-                android:fontFamily="@font/gmb"
+                android:fontFamily="@font/gmm"
                 android:textSize="20dp" />
 
 
@@ -48,7 +33,6 @@
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전주시"
                 android:textColor="#9acd32"
                 android:fontFamily="@font/gmb"
                 android:textSize="25dp" />
@@ -59,7 +43,6 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="전주시"
             android:textColor="#000000"
             android:fontFamily="@font/gmm"
             android:textSize="20dp"
@@ -74,6 +57,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:id="@+id/recommendListActivityRecyclerView"/>
+
+            <TextView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nullData"
+                android:layout_centerInParent="true"
+                android:text="데이터 준비 중"
+                android:textColor="#000000"
+                android:fontFamily="@font/gmm"
+                android:textSize="40dp" />
 
             <ProgressBar
                 android:id="@+id/progress"
@@ -93,8 +87,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="카페"
+            android:textColor="#000000"
             android:fontFamily="@font/gmm"
-            android:textColor="#9acd32"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="17dp"
             android:layout_marginBottom="17dp"
