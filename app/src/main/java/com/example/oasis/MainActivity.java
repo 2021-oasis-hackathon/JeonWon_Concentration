@@ -74,10 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
         bottomNavigationView = findViewById(R.id.bottom);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -150,6 +146,41 @@ public class MainActivity extends AppCompatActivity {
 }
 
 /*
+
+
+
+
+
+        Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.image10);
+        Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.image11);
+        Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.image12);
+
+
+        BlogCourse blogCourse = new BlogCourse(BitmapToString(bitmap1), "카페 노아");
+        BlogCourse blogCourse2 = new BlogCourse(BitmapToString(bitmap2), "다양한 디저트들");
+        BlogCourse blogCourse3 = new BlogCourse(BitmapToString(bitmap3), "소담한 조명");
+        blogCourseList.add(blogCourse);
+        blogCourseList.add(blogCourse2);
+        blogCourseList.add(blogCourse3);
+
+        String key = myRefBlog.push().getKey();
+        String childKey = myRefBlog.child(key).push().getKey();
+        String likeKey = myRefBlog.child(key).push().getKey();
+
+
+
+        myRefBlog.child(key).setValue(
+                new BlogMain(
+                        key, BitmapToString(profile1), "전주 ‘카페노아’ 커피 맛 좋아!", "2021-08-17", "친구랑 순대국밥을 먹고 헤어지기 아쉬워 차 한잔을 위해 찾아왔다. 외관의 이끌려 카페노아에 와버렸다! 다양한 디저트들도 보였고 특히 케익 류가 많은 것을 볼 수 있었다. 케익을 좋아한다면 꼭 오시길..^^",
+                        blogCourseList.get(0).getImage(), "0", "령은", childKey, likeKey, "#카페",
+                        "전라북도", "전주시"));
+
+
+        myRefBlog.child(key).child(childKey).setValue(blogCourseList);
+
+        SharedPreferences sf = getSharedPreferences("user", MODE_PRIVATE);
+        String nickName = sf.getString("nickName", "");
+        myRefBlog.child(key).child(likeKey).push().setValue(nickName);
  Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.image01);
         Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.image02);
         Bitmap bitmap3 = BitmapFactory.decodeResource(getResources(), R.drawable.image03);

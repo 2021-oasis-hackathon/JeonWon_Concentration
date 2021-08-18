@@ -145,6 +145,7 @@ public class BlogListActivity extends Fragment {
             }
         });
 
+
         filterTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -234,18 +235,24 @@ public class BlogListActivity extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 blogMainList.clear();
+                int a = 0;
+                int i = 0;
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     BlogMain blogMain = snapshot1.getValue(BlogMain.class);
 
                     if (blogMain.getLocation1().equals(finalLocation)) {
-
+                        if (blogMain.getChildKey().equals("-MhOkKwCRiY-mFlOSbsX")) {
+                            a = i;
+                        }
                         blogMainList.add(blogMain);
                         blogListActivityAdapter.notifyDataSetChanged();
                     }
 
 
+                    i++;
                 }
                 progress.setVisibility(View.GONE);
+                Collections.swap(blogMainList, 0, a);
 
             }
 
