@@ -8,8 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -25,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -299,11 +304,14 @@ public class DetailLocationActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(mAdapter);
 
-        for(int i = 0; i < 10; i++) {
-            bannerList.add("BANNER" + (i + 1));
-        }
+
 
         //배너
+
+        bannerList.add(BitmapToString(BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.banner1)));
+        bannerList.add(BitmapToString(BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.banner2)));
+        bannerList.add(BitmapToString(BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.banner3)));
+        bannerList.add(BitmapToString(BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.banner4)));
 
         recyclerView2 = (RecyclerView) findViewById(R.id.recommendBannerRecyclerView);
         recyclerView2.setHasFixedSize(true);
@@ -335,6 +343,15 @@ public class DetailLocationActivity extends AppCompatActivity {
             }
         });
     }
+
+    public String BitmapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[]  b = baos.toByteArray();
+        String temp = Base64.encodeToString(b, Base64.DEFAULT);
+        return temp;
+    }
+
 
     @Override
     public void onResume() {
@@ -375,7 +392,7 @@ public class DetailLocationActivity extends AppCompatActivity {
                     }
                 }
             };
-            timer.schedule(timerTask, 1000, 1000);
+            timer.schedule(timerTask, 3000, 3000);
         }
 
     }

@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/logo2"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             />
@@ -40,13 +40,10 @@
             android:textSize="30dp" />
 
 
-
-
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommendBannerRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:id="@+id/recommendBannerRecyclerView" />
-
+            android:layout_height="150dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"

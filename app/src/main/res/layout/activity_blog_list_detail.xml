@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/logo2"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             />
@@ -32,7 +32,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:orientation="horizontal">
 
             <TextView
@@ -44,15 +44,6 @@
                 android:fontFamily="@font/gmb"
                 android:textSize="25dp"/>
 
-            <TextView
-                android:id="@+id/location"
-                android:layout_marginLeft="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="제목"
-                android:textColor="#42C458"
-                android:fontFamily="@font/gmm"
-                android:textSize="18dp"/>
 
         </LinearLayout>
 
@@ -64,6 +55,7 @@
             android:layout_marginTop="15dp">
 
             <RelativeLayout
+                android:id="@+id/a"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
                 android:background="@drawable/edittext_design">
@@ -80,6 +72,17 @@
                     android:textSize="18dp"/>
             </RelativeLayout>
 
+            <TextView
+                android:layout_toRightOf="@+id/a"
+                android:id="@+id/location"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제목"
+                android:textColor="#42C458"
+                android:fontFamily="@font/gmm"
+                android:textSize="18dp"/>
 
 
         </RelativeLayout>
@@ -131,15 +134,23 @@
             android:layout_marginTop="5dp"/>
 
 
-        <TextView
-            android:id="@+id/content"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/gmm"
-            android:text="제목"
-            android:textColor="#000000"
-            android:textSize="22dp" />
+            >
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gmm"
+                android:text="제목"
+                android:textColor="#000000"
+                android:paddingBottom="50dp"
+                android:lineSpacingExtra="10dp"
+                android:textSize="16dp" />
+        </ScrollView>
+
 
     </LinearLayout>
 

@@ -167,7 +167,7 @@ public class BlogWriteActivity extends AppCompatActivity {
                 String strHashTag = hashTag.getText().toString();
                 String strContent = content.getText().toString();
 
-                if (strTitle.getBytes().length <= 0 || strContent.getBytes().length <= 0 || strHashTag.getBytes().length <=0) {
+                if (strTitle.getBytes().length <= 0 || strContent.getBytes().length <= 0 || strHashTag.getBytes().length <=0 || blogCourseList.size() <= 0) {
                     Toast.makeText(BlogWriteActivity.this, "입력사항을 확인해 주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
