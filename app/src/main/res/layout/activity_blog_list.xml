@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gmm"
                 android:text="ㅎㅇ"
-                android:textColor="#20C997"
+                android:textColor="#9acd32"
                 android:textSize="30dp" />
 
         </RelativeLayout>
