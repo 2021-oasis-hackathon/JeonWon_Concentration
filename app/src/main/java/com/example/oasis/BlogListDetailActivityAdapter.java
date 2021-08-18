@@ -18,8 +18,6 @@ public class BlogListDetailActivityAdapter extends RecyclerView.Adapter<BlogList
 
     List<BlogCourse> item;
 
-
-
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         View rootView;

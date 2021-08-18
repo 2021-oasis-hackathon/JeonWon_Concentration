@@ -18,7 +18,6 @@ public class SettingActivity extends AppCompatActivity {
 
     private ImageView back;
     private SwitchCompat loginState;
-
     private Button logOutButton;
 
     @Override
@@ -56,17 +55,5 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-
-
-//        loginState.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked) {
-//                    Log.d(TAG, "TRUE");
-//                } else {
-//                    Log.d(TAG, "FALSE");
-//                }
-//            }
-//        });
     }
 }

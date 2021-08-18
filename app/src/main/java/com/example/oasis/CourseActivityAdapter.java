@@ -49,9 +49,7 @@ public class CourseActivityAdapter extends RecyclerView.Adapter<CourseActivityAd
         holder.place.setText(dataList.get(position % dataList.size()).getPlace());
         holder.image.setImageBitmap(dataList.get(position % dataList.size()).getBitmap());
 
-
     }
-
     @Override
     public int getItemCount() {
         return dataList == null ? 0 : Integer.MAX_VALUE;

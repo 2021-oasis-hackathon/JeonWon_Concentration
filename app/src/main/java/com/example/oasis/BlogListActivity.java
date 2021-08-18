@@ -219,16 +219,13 @@ public class BlogListActivity extends Fragment {
         if (HomeActivity.selectLocation.equals("전라북도")) {
             location = "전라북도";
             for(int i = 0; i < HomeActivity.jbLocation.size(); i++) {
-               // Log.d(TAG, HomeActivity.jbLocation.get(i));
             }
         } else if (HomeActivity.selectLocation.equals("전라남도")) {
             location = "전라남도";
             for(int i = 0; i < HomeActivity.jnLocation.size(); i++) {
-                //Log.d(TAG, HomeActivity.jnLocation.get(i));
             }
         } else {
             location = "광주";
-            Log.d(TAG, "광주");
         }
         String finalLocation = location;
         myRefBlog.addValueEventListener(new ValueEventListener() {
@@ -323,45 +320,4 @@ public class BlogListActivity extends Fragment {
             return Integer.parseInt(arg0.getLike()) > Integer.parseInt(arg1.getLike()) ? -1 : Integer.parseInt(arg0.getLike()) < Integer.parseInt(arg1.getLike()) ? 1:0;
         }
     }
-
-    /*
-     @Override
-    public void onStart() {
-        super.onStart();
-
-        if (HomeActivity.selectLocation.equals("전라북도")) {
-            for(int i = 0; i < HomeActivity.jbLocation.size(); i++) {
-                Log.d(TAG, HomeActivity.jbLocation.get(i));
-            }
-        } else if (HomeActivity.selectLocation.equals("전라남도")) {
-            for(int i = 0; i < HomeActivity.jnLocation.size(); i++) {
-                Log.d(TAG, HomeActivity.jnLocation.get(i));
-            }
-        } else {
-            Log.d(TAG, "광주");
-        }
-        myRefBlog.child("전주시").child("blog").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                blogMainList.clear();
-                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    BlogMain blogMain = snapshot1.getValue(BlogMain.class);
-
-                    blogMainList.add(blogMain);
-                    blogListActivityAdapter.notifyDataSetChanged();
-
-
-
-                }
-                progress.setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-     */
 }

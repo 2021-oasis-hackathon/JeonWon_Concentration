@@ -119,10 +119,6 @@ public class RecommendListDetailActivity extends AppCompatActivity {
                         blogMainList.add(blogMain);
                         blogListActivityAdapter.notifyDataSetChanged();
                     }
-
-
-
-
                 }
                 progress.setVisibility(View.GONE);
 
