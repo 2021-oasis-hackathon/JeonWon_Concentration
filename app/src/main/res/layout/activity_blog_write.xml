@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textColor="#42C458"
+        android:textColor="#9acd32"
         android:fontFamily="@font/bmf"
         android:textSize="13dp" />
 
@@ -91,7 +91,7 @@
                             android:layout_height="wrap_content"
                             android:text="#맛집"
                             android:textSize="17dp"
-                            android:textColor="#42C458"
+                            android:textColor="#9acd32"
                             android:fontFamily="@font/gmn"/>
                     </LinearLayout>
 

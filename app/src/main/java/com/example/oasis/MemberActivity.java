@@ -44,7 +44,7 @@ import java.util.List;
 public class MemberActivity extends AppCompatActivity {
 
     private static final String TAG = "MemberActivity";
-    int REQUEST_EXTERNAL_STORAGE_PERMISSON = 1002;
+    //int REQUEST_EXTERNAL_STORAGE_PERMISSON = 1002;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRefUsers = database.getReference("Users");
@@ -169,17 +169,6 @@ public class MemberActivity extends AppCompatActivity {
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-                if (ContextCompat.checkSelfPermission(MemberActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(MemberActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                    } else {
-                        ActivityCompat.requestPermissions(MemberActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_EXTERNAL_STORAGE_PERMISSON);
-                    }
-                }
-
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 intent.setType("image/*");
@@ -211,10 +200,7 @@ public class MemberActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -222,8 +208,6 @@ public class MemberActivity extends AppCompatActivity {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             try {
                 bitmap = profileImage(data.getData());
-
-
                 if (bitmap != null) {
                     profileImage.setImageBitmap(bitmap);
                     if (bitmap != null) {
@@ -236,7 +220,6 @@ public class MemberActivity extends AppCompatActivity {
                 return;
             }
         }
-
     }
 
     public Bitmap StringToBitMap(String encodedString) {
@@ -248,7 +231,6 @@ public class MemberActivity extends AppCompatActivity {
             e.getMessage();
             return null;
         }
-
     }
 
     public String BitmapToString(Bitmap bitmap) {

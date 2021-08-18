@@ -86,7 +86,7 @@ public class DetailLocationActivity extends AppCompatActivity {
 
         progress = (ProgressBar) findViewById(R.id.progress);
         search = (ImageView) findViewById(R.id.search);
-        search.setColorFilter(Color.parseColor("#42C458"));
+        search.setColorFilter(Color.parseColor("#9acd32"));
 
         searchEditText = (EditText) findViewById(R.id.searchEditText);
 

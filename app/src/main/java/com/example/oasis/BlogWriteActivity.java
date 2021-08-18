@@ -256,6 +256,7 @@ public class BlogWriteActivity extends AppCompatActivity {
             try {
                 textView.setText("");
                 image = getImage(data.getData());
+                Log.d(TAG, String.valueOf(image));
                 courseImage.setImageBitmap(image);
 
             } catch (Exception e) {
