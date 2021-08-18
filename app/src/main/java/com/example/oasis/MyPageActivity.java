@@ -197,35 +197,6 @@ public class MyPageActivity extends Fragment {
         });
     }
 
-    /*
-        @Override
-    public void onStart() {
-        super.onStart();
-        blogMainList.clear();
-        myRefBlog.child("전주시").child("blog").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    BlogMain blogMain = snapshot1.getValue(BlogMain.class);
-                    if (blogMain.getNickName().equals(userNickName)) {
-                        blogMainList.add(blogMain);
-                    }
-
-                    blogListActivityAdapter.notifyDataSetChanged();
-                }
-
-                progress.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-     */
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -325,16 +296,4 @@ public class MyPageActivity extends Fragment {
         return Bitmap.createBitmap(src, 0, 0, src.getWidth(), src.getHeight(), matrix, true);
     }
 
-
-
-    // setting data
-    public void onActivityForResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 0) {
-            if(resultCode == getActivity().RESULT_OK) {
-                boolean loginState = data.getBooleanExtra("loginState", true);
-            }
-        }
-    }
 }

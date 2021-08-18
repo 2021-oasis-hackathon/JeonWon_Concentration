@@ -252,13 +252,8 @@ public class RecommendListActivity extends Fragment {
                     });
                     recyclerView.setAdapter(mAdapter);
                 }
-
-
-
                 progress.setVisibility(View.GONE);
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -275,12 +270,6 @@ public class RecommendListActivity extends Fragment {
         foodStore.setTextColor(Color.parseColor("#000000"));
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        //recommendList.clear();
-
-    }
 
     public String BitmapToString(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -296,64 +285,3 @@ public class RecommendListActivity extends Fragment {
         i = 0;
     }
 }
-
-
-
-//title, content, image, time, location
-
-/*
-               Bitmap bitmap1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.f1);
-        Bitmap bitmap2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.f2);
-        Bitmap bitmap3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.f3);
-        Bitmap bitmap4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.f4);
-
-
-        myRefBlog.push().setValue(
-                new Recommend("축제", "왕과의 산책", BitmapToString(bitmap1), "2021.07.01. (목) ~ 2021.09.30. (목)", "전주 경기전", "전라북도", "전주시" ));
-
-        myRefBlog.push().setValue(
-                new Recommend("축제", "전주 비바체", BitmapToString(bitmap2), "2021.05.22. (토) ~ 2021.10.02. (토)", "한국소리문화의전당", "전라북도", "전주시"  ));
-
-        myRefBlog.push().setValue(
-                new Recommend("축제", "전주 문화재 야행", BitmapToString(bitmap3), "2021.10.08. (금) ~ 2021.10.10. (일)", "경기전, 전주한옥마을", "전라북도", "전주시"  ));
-
-        myRefBlog.push().setValue(
-                new Recommend("축제", "정원 문화 박람회", BitmapToString(bitmap4), "2021.09.09. (목) ~ 2021.09.11. (토)", "전주종합경기장", "전라북도", "전주시"  ));
-
-        Bitmap bitmap11 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s1);
-        Bitmap bitmap22 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s2);
-        Bitmap bitmap33 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s3);
-        Bitmap bitmap44 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s4);
-
-
-        myRefBlog.push().setValue(
-                new Recommend("맛집", "피스비 (양식)", BitmapToString(bitmap11), "매일 11:30 - 21:00", "전라북도 전주시 덕진구 권삼득로 319-1", "전라북도", "전주시"  ));
-
-        myRefBlog.push().setValue(
-                new Recommend("맛집", "통집", BitmapToString(bitmap22), "매일 10:00 – 02:00 일요일 17:00 – 02:00", "전북 전주시 덕진구 삼송1길 35", "전라북도", "전주시"  ));
-
-        myRefBlog.push().setValue(
-                new Recommend("맛집", "서양주택(양식)", BitmapToString(bitmap33), "매일 11:00 – 22:00", "전라북도 전주시 완산구 전주객사2길 40", "전라북도", "전주시"  ));
-
-        myRefBlog.push().setValue(
-                new Recommend("맛집", "경양카츠", BitmapToString(bitmap44), "매일 11:30 - 21:00", "전북 전주시 완산구 전주객사4길 47 1층 경양카츠", "전라북도", "전주시"  ));
-
-        Bitmap bitmap111 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p1);
-        Bitmap bitmap222 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p2);
-        Bitmap bitmap333 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p3);
-        Bitmap bitmap444 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p5);
-
-
-        myRefBlog.push().setValue(
-                new Recommend("카페", "NOAH", BitmapToString(bitmap111), "매일 09:30 ~ 23:59 연중무휴", "전북 전주시 덕진구 편운로 25", "전라북도", "전주시"  ));
-
-        myRefBlog.push().setValue(
-                new Recommend("카페", "그날의 온도", BitmapToString(bitmap222), "평일 11:00 ~ 20:30", "전북 전주시 덕진구 원동로 45", "전라북도", "전주시"  ));
-
-        myRefBlog.push().setValue(
-                new Recommend("카페", "BLEU", BitmapToString(bitmap333), "매일 11:00 ~ 22:00", "전북 전주시 완산구 태진로 58-8", "전라북도", "전주시"  ));
-
-        myRefBlog.push().setValue(
-                new Recommend("카페", "빈타이", BitmapToString(bitmap444), "매일 12:00 ~ 23:00", "전북 전주시 덕진구 명륜3길 10-4", "전라북도", "전주시"  ));
-
-*/
