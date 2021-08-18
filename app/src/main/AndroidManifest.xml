@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Oasis"
         android:requestLegacyExternalStorage="true">
+
         <activity
             android:name=".BlogSelectedLocationActivity"
             android:theme="@style/Transparent" />

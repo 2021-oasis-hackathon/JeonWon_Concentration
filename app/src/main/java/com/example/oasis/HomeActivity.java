@@ -60,7 +60,7 @@ public class HomeActivity extends Fragment {
         jbLocation.add("군산시");
         jbLocation.add("부안시");
         jbLocation.add("고창시");
-        jbLocation.add("임실시");
+        jbLocation.add("임실군");
 
         jnLocation.add("여수시");
         jnLocation.add("순천시");
@@ -190,7 +190,7 @@ public class HomeActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DetailLocationActivity.class);
-                intent.putExtra("location", "임실시");
+                intent.putExtra("location", "임실군");
                 startActivity(intent);
             }
         });

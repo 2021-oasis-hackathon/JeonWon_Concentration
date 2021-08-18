@@ -118,7 +118,7 @@ public class BlogSelectedLocationActivity extends AppCompatActivity {
         imsil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setLocation = "임실시";
+                setLocation = "임실군";
                 Intent intent = new Intent(BlogSelectedLocationActivity.this, BlogWriteActivity.class);
                 startActivity(intent);
                 finish();

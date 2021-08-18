@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,8 +58,10 @@ public class RecommendListActivity extends Fragment {
 
     public static String setTitle, setLocation, setTime, setImage;
 
-    String[] locationList = {"전주시", "정읍시", "군산시", "부안시", "고창시", "임실시", "광주", "여수시", "순천시", "완도시", "목포시", "보성시", "해남시" };
+    String[] locationList = {"전주시", "정읍시", "군산시", "부안시", "고창시", "임실군", "광주", "여수시", "순천시", "완도시", "목포시", "보성시", "해남시" };
     String randomLocation;
+
+    public static int i = 0;
 
     private View v;
     public RecommendListActivity() {}
@@ -74,10 +77,17 @@ public class RecommendListActivity extends Fragment {
         location = (TextView) v.findViewById(R.id.location);
         title = (TextView) v.findViewById(R.id.title);
 
+        if (i == 0) {
+            randomLocation = "전주시";
+            i++;
+        } else {
+            int randomNum = (int) (Math.random() * 13);
+            randomLocation = locationList[randomNum];
+        }
 
-        int randomNum = (int) (Math.random() * 13) + 1;
-        randomLocation = locationList[randomNum];
-        Log.d(TAG, "");
+
+
+
         location.setText(randomLocation);
 
 
@@ -208,11 +218,14 @@ public class RecommendListActivity extends Fragment {
                     if (recommend.getLocation2().equals(randomLocation)) {
                         recommendList.add(recommend);
                     }
-
                 }
 
                 if (recommendList.size() == 0) {
                     nullData.setVisibility(View.VISIBLE);
+                    nullData.setSingleLine(true);    // 한줄로 표시하기
+                    nullData.setEllipsize(TextUtils.TruncateAt.MARQUEE); // 흐르게 만들기
+                    nullData.setSelected(true);
+
                     title.setText("");
                     cafe.setTextColor(Color.parseColor("#000000"));
                 } else {

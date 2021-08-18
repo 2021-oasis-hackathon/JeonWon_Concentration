@@ -13,24 +13,23 @@
         android:layout_marginTop="30dp">
 
 
-
-
         <ImageView
             android:id="@+id/logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/logo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginRight="10dp" />
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
+
+
     <RelativeLayout
+        android:layout_above="@+id/center"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/spinner_background"
-        >
+        android:layout_marginBottom="10dp">
 
         <Spinner
             android:id="@+id/spinner"
@@ -44,7 +43,6 @@
 
     <RelativeLayout
         android:id="@+id/gwangju"
-        android:visibility="gone"
         android:layout_weight="1"
         android:layout_width="100dp"
         android:layout_centerInParent="true"
@@ -80,7 +78,6 @@
 
 
     <LinearLayout
-
         android:id="@+id/jbMap"
         android:layout_centerInParent="true"
         android:layout_below="@+id/title"
@@ -306,8 +303,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/center"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
         android:id="@+id/jnMap"
-        android:visibility="gone"
         android:layout_centerInParent="true"
         android:layout_below="@+id/title"
         android:layout_width="match_parent"
