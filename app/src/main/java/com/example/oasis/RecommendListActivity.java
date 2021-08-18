@@ -84,16 +84,7 @@ public class RecommendListActivity extends Fragment {
             int randomNum = (int) (Math.random() * 13);
             randomLocation = locationList[randomNum];
         }
-
-
-
-
-<<<<<<< HEAD
-=======
-        int randomNum = (int) (Math.random() * 13);
-        randomLocation = locationList[randomNum];
-        Log.d(TAG, "");
->>>>>>> 9744137843350af1bc19e86c563d86c604149db2
+        
         location.setText(randomLocation);
 
 
