@@ -126,7 +126,7 @@ public class BlogListActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 filterView.setVisibility(View.GONE);
-                Collections.sort(blogMainList, new DateAscCompare());
+                Collections.sort(blogMainList, new DateDescCompare());
                 blogListActivityAdapter = new BlogListActivityAdapter(blogMainList, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -264,6 +264,17 @@ public class BlogListActivity extends Fragment {
         }
 
     }
+
+    // 날짜 내림차순
+
+    static class DateDescCompare implements Comparator<BlogMain> {
+        @Override
+        public int compare(BlogMain arg0, BlogMain arg1) {
+            return arg1.getDate().compareTo(arg0.getDate());
+        }
+
+    }
+
 
     // 이름 오름차순
 

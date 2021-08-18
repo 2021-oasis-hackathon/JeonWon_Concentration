@@ -10,14 +10,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/logo2"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gmm"
+                android:text="ㅎㅇ"
+                android:textColor="#20C997"
+                android:textSize="30dp" />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
@@ -25,23 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/top"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gmb"
-                android:text="ㅎㅇ"
-                android:textColor="#9acd32"
-                android:textSize="30dp" />
-
-        </RelativeLayout>
 
 
         <androidx.recyclerview.widget.RecyclerView
