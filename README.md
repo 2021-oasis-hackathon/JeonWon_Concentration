@@ -1,4 +1,5 @@
-![Untitled](https://user-images.githubusercontent.com/55828162/129993190-e8cf64ef-461b-4c3e-b444-2318a65ec213.png)
+![메인로고](https://user-images.githubusercontent.com/55828162/129993559-d9e6ab3c-0934-4396-8653-e6d373fee8e2.png)
+
 
 ## 프로젝트 소개 🎶
 
